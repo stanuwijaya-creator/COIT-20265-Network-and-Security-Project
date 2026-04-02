@@ -1,0 +1,1002 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.trees.J48 -C 0.25 -M 2
+Relation:     DF_unsw_test_p_weka-weka.filters.unsupervised.attribute.Remove-R1,4,6,12-13,16-26,29,32-33,37-38,40,42
+Instances:    22799
+Attributes:   20
+              proto
+              service
+              spkts
+              sbytes
+              dbytes
+              rate
+              sttl
+              dttl
+              sloss
+              dloss
+              smean
+              dmean
+              response_body_len
+              ct_srv_src
+              ct_src_dport_ltm
+              ct_dst_sport_ltm
+              ct_dst_src_ltm
+              ct_flw_http_mthd
+              ct_srv_dst
+              attack_cat
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+J48 pruned tree
+------------------
+
+ct_dst_src_ltm <= 10
+|   sttl <= 60
+|   |   ct_dst_sport_ltm <= 2: Normal (4633.0)
+|   |   ct_dst_sport_ltm > 2
+|   |   |   spkts <= 1: DoS (43.0/7.0)
+|   |   |   spkts > 1: Normal (25.0)
+|   sttl > 60
+|   |   dbytes <= 1550
+|   |   |   sttl <= 62
+|   |   |   |   ct_dst_src_ltm <= 2
+|   |   |   |   |   ct_srv_dst <= 2
+|   |   |   |   |   |   dbytes <= 138
+|   |   |   |   |   |   |   proto <= 114
+|   |   |   |   |   |   |   |   sloss <= 1: Exploits (2.0)
+|   |   |   |   |   |   |   |   sloss > 1: Normal (101.0)
+|   |   |   |   |   |   |   proto > 114: DoS (14.0/1.0)
+|   |   |   |   |   |   dbytes > 138
+|   |   |   |   |   |   |   smean <= 47
+|   |   |   |   |   |   |   |   ct_dst_src_ltm <= 1
+|   |   |   |   |   |   |   |   |   dbytes <= 580: Backdoor (4.0)
+|   |   |   |   |   |   |   |   |   dbytes > 580: DoS (4.0)
+|   |   |   |   |   |   |   |   ct_dst_src_ltm > 1: Exploits (44.0)
+|   |   |   |   |   |   |   smean > 47
+|   |   |   |   |   |   |   |   ct_dst_src_ltm <= 1
+|   |   |   |   |   |   |   |   |   rate <= 23.197406
+|   |   |   |   |   |   |   |   |   |   response_body_len <= 117
+|   |   |   |   |   |   |   |   |   |   |   ct_srv_dst <= 1
+|   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src <= 4
+|   |   |   |   |   |   |   |   |   |   |   |   |   ct_flw_http_mthd <= 0: DoS (22.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   ct_flw_http_mthd > 0
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   smean <= 82: DoS (11.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   smean > 82
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 896: Exploits (4.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes > 896: DoS (5.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src > 4: Exploits (4.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   ct_srv_dst > 1: DoS (11.0/1.0)
+|   |   |   |   |   |   |   |   |   |   response_body_len > 117
+|   |   |   |   |   |   |   |   |   |   |   ct_src_dport_ltm <= 1
+|   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 792: DoS (5.0)
+|   |   |   |   |   |   |   |   |   |   |   |   sbytes > 792: Normal (40.0/12.0)
+|   |   |   |   |   |   |   |   |   |   |   ct_src_dport_ltm > 1: DoS (2.0)
+|   |   |   |   |   |   |   |   |   rate > 23.197406
+|   |   |   |   |   |   |   |   |   |   rate <= 43.096675: DoS (85.0/8.0)
+|   |   |   |   |   |   |   |   |   |   rate > 43.096675
+|   |   |   |   |   |   |   |   |   |   |   dloss <= 2
+|   |   |   |   |   |   |   |   |   |   |   |   service <= 1
+|   |   |   |   |   |   |   |   |   |   |   |   |   spkts <= 9: Exploits (3.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   spkts > 9
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   dloss <= 1: DoS (3.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   dloss > 1
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_dst <= 1
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_flw_http_mthd <= 0
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src <= 1
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 798: Exploits (2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes > 798: DoS (3.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src > 1: DoS (9.0/2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_flw_http_mthd > 0: Exploits (2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_dst > 1: Exploits (4.0)
+|   |   |   |   |   |   |   |   |   |   |   |   service > 1: DoS (103.0/23.0)
+|   |   |   |   |   |   |   |   |   |   |   dloss > 2
+|   |   |   |   |   |   |   |   |   |   |   |   service <= 2: Exploits (2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   service > 2: Backdoor (3.0/1.0)
+|   |   |   |   |   |   |   |   ct_dst_src_ltm > 1
+|   |   |   |   |   |   |   |   |   response_body_len <= 117
+|   |   |   |   |   |   |   |   |   |   ct_dst_sport_ltm <= 1
+|   |   |   |   |   |   |   |   |   |   |   ct_srv_dst <= 1: DoS (7.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   ct_srv_dst > 1
+|   |   |   |   |   |   |   |   |   |   |   |   dbytes <= 932: DoS (3.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   dbytes > 932: Exploits (7.0)
+|   |   |   |   |   |   |   |   |   |   ct_dst_sport_ltm > 1: DoS (2.0)
+|   |   |   |   |   |   |   |   |   response_body_len > 117
+|   |   |   |   |   |   |   |   |   |   rate <= 49.050955
+|   |   |   |   |   |   |   |   |   |   |   smean <= 87: Normal (65.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   smean > 87: Exploits (2.0/1.0)
+|   |   |   |   |   |   |   |   |   |   rate > 49.050955: DoS (8.0/2.0)
+|   |   |   |   |   ct_srv_dst > 2
+|   |   |   |   |   |   ct_flw_http_mthd <= 0
+|   |   |   |   |   |   |   ct_srv_src <= 2
+|   |   |   |   |   |   |   |   rate <= 16.366785: Normal (2.0)
+|   |   |   |   |   |   |   |   rate > 16.366785: DoS (7.0)
+|   |   |   |   |   |   |   ct_srv_src > 2
+|   |   |   |   |   |   |   |   sbytes <= 898: Analysis (57.0/1.0)
+|   |   |   |   |   |   |   |   sbytes > 898: DoS (2.0)
+|   |   |   |   |   |   ct_flw_http_mthd > 0
+|   |   |   |   |   |   |   rate <= 24.351532: Normal (4.0)
+|   |   |   |   |   |   |   rate > 24.351532: Exploits (4.0/1.0)
+|   |   |   |   ct_dst_src_ltm > 2
+|   |   |   |   |   ct_srv_src <= 2
+|   |   |   |   |   |   ct_dst_src_ltm <= 4
+|   |   |   |   |   |   |   service <= 4: Exploits (2.0)
+|   |   |   |   |   |   |   service > 4
+|   |   |   |   |   |   |   |   dmean <= 158: Normal (17.0/1.0)
+|   |   |   |   |   |   |   |   dmean > 158: Exploits (4.0/1.0)
+|   |   |   |   |   |   ct_dst_src_ltm > 4: DoS (4.0)
+|   |   |   |   |   ct_srv_src > 2: Normal (788.0/3.0)
+|   |   |   sttl > 62
+|   |   |   |   sloss <= 0
+|   |   |   |   |   sbytes <= 178
+|   |   |   |   |   |   smean <= 83
+|   |   |   |   |   |   |   smean <= 54
+|   |   |   |   |   |   |   |   ct_srv_dst <= 2
+|   |   |   |   |   |   |   |   |   proto <= 107
+|   |   |   |   |   |   |   |   |   |   proto <= 46: Normal (2.0)
+|   |   |   |   |   |   |   |   |   |   proto > 46: DoS (63.0/21.0)
+|   |   |   |   |   |   |   |   |   proto > 107
+|   |   |   |   |   |   |   |   |   |   dttl <= 30
+|   |   |   |   |   |   |   |   |   |   |   smean <= 51: DoS (20.0/4.0)
+|   |   |   |   |   |   |   |   |   |   |   smean > 51
+|   |   |   |   |   |   |   |   |   |   |   |   spkts <= 2
+|   |   |   |   |   |   |   |   |   |   |   |   |   ct_dst_src_ltm <= 1
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_dst <= 1: Normal (12.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_dst > 1: Fuzzers (2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   ct_dst_src_ltm > 1: Normal (39.0)
+|   |   |   |   |   |   |   |   |   |   |   |   spkts > 2: DoS (5.0/1.0)
+|   |   |   |   |   |   |   |   |   |   dttl > 30: Backdoor (5.0/1.0)
+|   |   |   |   |   |   |   |   ct_srv_dst > 2
+|   |   |   |   |   |   |   |   |   ct_dst_src_ltm <= 1: Fuzzers (26.0/1.0)
+|   |   |   |   |   |   |   |   |   ct_dst_src_ltm > 1
+|   |   |   |   |   |   |   |   |   |   ct_srv_dst <= 4: Normal (33.0/7.0)
+|   |   |   |   |   |   |   |   |   |   ct_srv_dst > 4
+|   |   |   |   |   |   |   |   |   |   |   ct_src_dport_ltm <= 1: Fuzzers (8.0)
+|   |   |   |   |   |   |   |   |   |   |   ct_src_dport_ltm > 1
+|   |   |   |   |   |   |   |   |   |   |   |   rate <= 200000.0051: DoS (26.0/12.0)
+|   |   |   |   |   |   |   |   |   |   |   |   rate > 200000.0051: Fuzzers (10.0)
+|   |   |   |   |   |   |   smean > 54
+|   |   |   |   |   |   |   |   ct_src_dport_ltm <= 1
+|   |   |   |   |   |   |   |   |   service <= 1
+|   |   |   |   |   |   |   |   |   |   proto <= 106: DoS (22.0/1.0)
+|   |   |   |   |   |   |   |   |   |   proto > 106: Shellcode (45.0/9.0)
+|   |   |   |   |   |   |   |   |   service > 1
+|   |   |   |   |   |   |   |   |   |   service <= 6
+|   |   |   |   |   |   |   |   |   |   |   sbytes <= 116: Reconnaissance (2.0)
+|   |   |   |   |   |   |   |   |   |   |   sbytes > 116: DoS (15.0)
+|   |   |   |   |   |   |   |   |   |   service > 6
+|   |   |   |   |   |   |   |   |   |   |   sbytes <= 130: Reconnaissance (2.0)
+|   |   |   |   |   |   |   |   |   |   |   sbytes > 130
+|   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 136: DoS (10.0/4.0)
+|   |   |   |   |   |   |   |   |   |   |   |   sbytes > 136: Reconnaissance (2.0)
+|   |   |   |   |   |   |   |   ct_src_dport_ltm > 1
+|   |   |   |   |   |   |   |   |   sbytes <= 116: Generic (76.0)
+|   |   |   |   |   |   |   |   |   sbytes > 116
+|   |   |   |   |   |   |   |   |   |   proto <= 106: DoS (14.0/2.0)
+|   |   |   |   |   |   |   |   |   |   proto > 106: Exploits (7.0/3.0)
+|   |   |   |   |   |   smean > 83
+|   |   |   |   |   |   |   sbytes <= 168
+|   |   |   |   |   |   |   |   rate <= 30303.03007: DoS (11.0/3.0)
+|   |   |   |   |   |   |   |   rate > 30303.03007: Reconnaissance (408.0)
+|   |   |   |   |   |   |   sbytes > 168
+|   |   |   |   |   |   |   |   sbytes <= 172: DoS (5.0/2.0)
+|   |   |   |   |   |   |   |   sbytes > 172: Shellcode (7.0)
+|   |   |   |   |   sbytes > 178
+|   |   |   |   |   |   smean <= 100
+|   |   |   |   |   |   |   sbytes <= 198
+|   |   |   |   |   |   |   |   smean <= 90: DoS (211.0/109.0)
+|   |   |   |   |   |   |   |   smean > 90
+|   |   |   |   |   |   |   |   |   ct_src_dport_ltm <= 1: Shellcode (14.0/3.0)
+|   |   |   |   |   |   |   |   |   ct_src_dport_ltm > 1: Normal (2.0)
+|   |   |   |   |   |   |   sbytes > 198: DoS (4952.0/2497.0)
+|   |   |   |   |   |   smean > 100
+|   |   |   |   |   |   |   proto <= 103
+|   |   |   |   |   |   |   |   ct_src_dport_ltm <= 1
+|   |   |   |   |   |   |   |   |   rate <= 5.138089: DoS (77.0/9.0)
+|   |   |   |   |   |   |   |   |   rate > 5.138089
+|   |   |   |   |   |   |   |   |   |   sbytes <= 708: DoS (28.0/2.0)
+|   |   |   |   |   |   |   |   |   |   sbytes > 708
+|   |   |   |   |   |   |   |   |   |   |   spkts <= 34
+|   |   |   |   |   |   |   |   |   |   |   |   rate <= 16.388776: DoS (8.0)
+|   |   |   |   |   |   |   |   |   |   |   |   rate > 16.388776
+|   |   |   |   |   |   |   |   |   |   |   |   |   rate <= 21.956339: Exploits (20.0/9.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   rate > 21.956339
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   spkts <= 22: Exploits (44.0/22.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   spkts > 22: DoS (7.0)
+|   |   |   |   |   |   |   |   |   |   |   spkts > 34: Exploits (16.0/8.0)
+|   |   |   |   |   |   |   |   ct_src_dport_ltm > 1
+|   |   |   |   |   |   |   |   |   proto <= 59: Normal (3.0)
+|   |   |   |   |   |   |   |   |   proto > 59
+|   |   |   |   |   |   |   |   |   |   ct_srv_src <= 7
+|   |   |   |   |   |   |   |   |   |   |   smean <= 158: DoS (22.0/2.0)
+|   |   |   |   |   |   |   |   |   |   |   smean > 158
+|   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src <= 3: DoS (20.0/4.0)
+|   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src > 3: Backdoor (6.0)
+|   |   |   |   |   |   |   |   |   |   ct_srv_src > 7: Fuzzers (2.0)
+|   |   |   |   |   |   |   proto > 103
+|   |   |   |   |   |   |   |   ct_srv_dst <= 1
+|   |   |   |   |   |   |   |   |   sbytes <= 806
+|   |   |   |   |   |   |   |   |   |   service <= 0
+|   |   |   |   |   |   |   |   |   |   |   sbytes <= 416: Shellcode (62.0/3.0)
+|   |   |   |   |   |   |   |   |   |   |   sbytes > 416
+|   |   |   |   |   |   |   |   |   |   |   |   ct_dst_src_ltm <= 1
+|   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src <= 4
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 746
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src <= 2: Shellcode (30.0/11.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src > 2: DoS (4.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes > 746: Exploits (2.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src > 4: Shellcode (7.0)
+|   |   |   |   |   |   |   |   |   |   |   |   ct_dst_src_ltm > 1: DoS (4.0/1.0)
+|   |   |   |   |   |   |   |   |   |   service > 0
+|   |   |   |   |   |   |   |   |   |   |   service <= 6: DoS (5.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   service > 6: Exploits (2.0/1.0)
+|   |   |   |   |   |   |   |   |   sbytes > 806
+|   |   |   |   |   |   |   |   |   |   spkts <= 46
+|   |   |   |   |   |   |   |   |   |   |   rate <= 111111.1072
+|   |   |   |   |   |   |   |   |   |   |   |   smean <= 404: Worms (2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   smean > 404
+|   |   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 1128
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 1080: Normal (2.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes > 1080: Exploits (4.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   sbytes > 1128: DoS (27.0/7.0)
+|   |   |   |   |   |   |   |   |   |   |   rate > 111111.1072
+|   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src <= 3
+|   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src <= 1
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 1640
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 1218: Fuzzers (2.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes > 1218: Generic (3.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes > 1640: Exploits (3.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src > 1
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   rate <= 333333.3215
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   rate <= 166666.6608: Normal (7.0/4.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   rate > 166666.6608
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   rate <= 200000.0051: Shellcode (2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   rate > 200000.0051: Exploits (2.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   rate > 333333.3215: Normal (2.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src > 3
+|   |   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 1358: DoS (2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   sbytes > 1358: Fuzzers (2.0)
+|   |   |   |   |   |   |   |   |   |   spkts > 46: Fuzzers (3.0)
+|   |   |   |   |   |   |   |   ct_srv_dst > 1
+|   |   |   |   |   |   |   |   |   ct_srv_src <= 3
+|   |   |   |   |   |   |   |   |   |   ct_dst_src_ltm <= 1
+|   |   |   |   |   |   |   |   |   |   |   sbytes <= 1000: Shellcode (24.0/3.0)
+|   |   |   |   |   |   |   |   |   |   |   sbytes > 1000
+|   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 1216: Fuzzers (14.0)
+|   |   |   |   |   |   |   |   |   |   |   |   sbytes > 1216
+|   |   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 2050
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   rate <= 90909.0902: Exploits (3.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   rate > 90909.0902: DoS (4.0/2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   sbytes > 2050: DoS (8.0/1.0)
+|   |   |   |   |   |   |   |   |   |   ct_dst_src_ltm > 1
+|   |   |   |   |   |   |   |   |   |   |   dbytes <= 330
+|   |   |   |   |   |   |   |   |   |   |   |   ct_src_dport_ltm <= 2
+|   |   |   |   |   |   |   |   |   |   |   |   |   spkts <= 2: Normal (80.0/8.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   spkts > 2: Fuzzers (6.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   ct_src_dport_ltm > 2: Fuzzers (3.0)
+|   |   |   |   |   |   |   |   |   |   |   dbytes > 330: DoS (3.0)
+|   |   |   |   |   |   |   |   |   ct_srv_src > 3
+|   |   |   |   |   |   |   |   |   |   ct_dst_src_ltm <= 2: Fuzzers (125.0/9.0)
+|   |   |   |   |   |   |   |   |   |   ct_dst_src_ltm > 2
+|   |   |   |   |   |   |   |   |   |   |   smean <= 363
+|   |   |   |   |   |   |   |   |   |   |   |   ct_dst_src_ltm <= 4: Normal (11.0/3.0)
+|   |   |   |   |   |   |   |   |   |   |   |   ct_dst_src_ltm > 4: Shellcode (6.0/3.0)
+|   |   |   |   |   |   |   |   |   |   |   smean > 363
+|   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src <= 4: Normal (7.0)
+|   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src > 4
+|   |   |   |   |   |   |   |   |   |   |   |   |   ct_dst_src_ltm <= 4: Fuzzers (13.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   ct_dst_src_ltm > 4
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 1044: Normal (2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes > 1044
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 1100: Fuzzers (12.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes > 1100: Normal (3.0)
+|   |   |   |   sloss > 0
+|   |   |   |   |   ct_srv_dst <= 1
+|   |   |   |   |   |   dbytes <= 354
+|   |   |   |   |   |   |   sbytes <= 1020
+|   |   |   |   |   |   |   |   smean <= 55
+|   |   |   |   |   |   |   |   |   sbytes <= 532
+|   |   |   |   |   |   |   |   |   |   dttl <= 60: Normal (10.0)
+|   |   |   |   |   |   |   |   |   |   dttl > 60
+|   |   |   |   |   |   |   |   |   |   |   sbytes <= 496: DoS (29.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   sbytes > 496
+|   |   |   |   |   |   |   |   |   |   |   |   service <= 3
+|   |   |   |   |   |   |   |   |   |   |   |   |   service <= 1
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   rate <= 41.543157: Shellcode (20.0/8.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   rate > 41.543157
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src <= 1: DoS (8.0/3.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src > 1
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   rate <= 72.95566: DoS (3.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   rate > 72.95566: Shellcode (4.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   service > 1: DoS (3.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   service > 3: Fuzzers (3.0)
+|   |   |   |   |   |   |   |   |   sbytes > 532
+|   |   |   |   |   |   |   |   |   |   sbytes <= 534: Normal (55.0/2.0)
+|   |   |   |   |   |   |   |   |   |   sbytes > 534
+|   |   |   |   |   |   |   |   |   |   |   spkts <= 11: Shellcode (10.0/3.0)
+|   |   |   |   |   |   |   |   |   |   |   spkts > 11: DoS (2.0)
+|   |   |   |   |   |   |   |   smean > 55
+|   |   |   |   |   |   |   |   |   smean <= 56
+|   |   |   |   |   |   |   |   |   |   sbytes <= 562
+|   |   |   |   |   |   |   |   |   |   |   dbytes <= 304: Shellcode (2.0)
+|   |   |   |   |   |   |   |   |   |   |   dbytes > 304: Fuzzers (2.0)
+|   |   |   |   |   |   |   |   |   |   sbytes > 562
+|   |   |   |   |   |   |   |   |   |   |   dbytes <= 304: Shellcode (4.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   dbytes > 304: Reconnaissance (328.0/1.0)
+|   |   |   |   |   |   |   |   |   smean > 56
+|   |   |   |   |   |   |   |   |   |   service <= 1
+|   |   |   |   |   |   |   |   |   |   |   rate <= 15.550036
+|   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src <= 3
+|   |   |   |   |   |   |   |   |   |   |   |   |   rate <= 7.087962: Shellcode (4.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   rate > 7.087962
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src <= 1: Normal (8.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src > 1: Fuzzers (3.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src > 3
+|   |   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 680: Backdoor (2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   sbytes > 680: Shellcode (2.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   rate > 15.550036
+|   |   |   |   |   |   |   |   |   |   |   |   smean <= 76
+|   |   |   |   |   |   |   |   |   |   |   |   |   smean <= 75: Shellcode (81.0/15.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   smean > 75: Normal (2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   smean > 76
+|   |   |   |   |   |   |   |   |   |   |   |   |   dbytes <= 304
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   rate <= 35.101558
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src <= 2: DoS (6.0/2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src > 2: Shellcode (2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   rate > 35.101558
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   rate <= 80.480491
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src <= 6
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src <= 1
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   rate <= 49.718957: Shellcode (4.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   rate > 49.718957
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   rate <= 70.446459: Exploits (4.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   rate > 70.446459: Shellcode (3.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src > 1: Shellcode (10.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src > 6: Exploits (2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   rate > 80.480491: Exploits (4.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   dbytes > 304
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src <= 1: Shellcode (5.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src > 1: DoS (5.0/2.0)
+|   |   |   |   |   |   |   |   |   |   service > 1
+|   |   |   |   |   |   |   |   |   |   |   smean <= 71
+|   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 566: Fuzzers (2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   sbytes > 566: DoS (7.0/2.0)
+|   |   |   |   |   |   |   |   |   |   |   smean > 71
+|   |   |   |   |   |   |   |   |   |   |   |   ct_flw_http_mthd <= 0: DoS (4.0)
+|   |   |   |   |   |   |   |   |   |   |   |   ct_flw_http_mthd > 0
+|   |   |   |   |   |   |   |   |   |   |   |   |   smean <= 87
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_flw_http_mthd <= 2: Reconnaissance (129.0/31.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_flw_http_mthd > 2: Exploits (6.0/2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   smean > 87
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   dbytes <= 304
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   smean <= 100
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   smean <= 99
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src <= 1
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   rate <= 41.84474: Reconnaissance (21.0/6.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   rate > 41.84474: Exploits (52.0/20.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src > 1: Reconnaissance (16.0/5.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   smean > 99
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   rate <= 74.281277: DoS (4.0/2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   rate > 74.281277: Reconnaissance (3.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   smean > 100
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   smean <= 101
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   rate <= 64.613118: Backdoor (2.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   rate > 64.613118: Exploits (4.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   smean > 101: Reconnaissance (2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   dbytes > 304
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   smean <= 88: DoS (2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   smean > 88
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src <= 1: Exploits (14.0/7.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src > 1
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   rate <= 15.51267: Exploits (3.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   rate > 15.51267: Reconnaissance (6.0/1.0)
+|   |   |   |   |   |   |   sbytes > 1020
+|   |   |   |   |   |   |   |   service <= 4
+|   |   |   |   |   |   |   |   |   smean <= 247
+|   |   |   |   |   |   |   |   |   |   dbytes <= 304
+|   |   |   |   |   |   |   |   |   |   |   service <= 1
+|   |   |   |   |   |   |   |   |   |   |   |   rate <= 27.252796
+|   |   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 1206: Shellcode (3.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   sbytes > 1206
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   rate <= 20.63515: Fuzzers (2.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   rate > 20.63515: DoS (4.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   rate > 27.252796
+|   |   |   |   |   |   |   |   |   |   |   |   |   rate <= 84.393809
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_flw_http_mthd <= 0
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   smean <= 188
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 1858: Exploits (24.0/9.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes > 1858: Shellcode (2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   smean > 188
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   smean <= 206: Exploits (6.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   smean > 206
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 2268
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src <= 2
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 2174: Exploits (2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes > 2174: DoS (2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src > 2: DoS (2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes > 2268: Exploits (3.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_flw_http_mthd > 0
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 1960: DoS (2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes > 1960: Exploits (2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   rate > 84.393809: DoS (4.0)
+|   |   |   |   |   |   |   |   |   |   |   service > 1: DoS (2.0)
+|   |   |   |   |   |   |   |   |   |   dbytes > 304
+|   |   |   |   |   |   |   |   |   |   |   rate <= 15.436005
+|   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src <= 1: Fuzzers (2.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src > 1: DoS (5.0/2.0)
+|   |   |   |   |   |   |   |   |   |   |   rate > 15.436005
+|   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 1228: Shellcode (4.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   sbytes > 1228: DoS (9.0/2.0)
+|   |   |   |   |   |   |   |   |   smean > 247
+|   |   |   |   |   |   |   |   |   |   smean <= 252: Normal (37.0/1.0)
+|   |   |   |   |   |   |   |   |   |   smean > 252
+|   |   |   |   |   |   |   |   |   |   |   ct_srv_src <= 3
+|   |   |   |   |   |   |   |   |   |   |   |   smean <= 563
+|   |   |   |   |   |   |   |   |   |   |   |   |   rate <= 87.849976
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   smean <= 269: Exploits (3.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   smean > 269: DoS (14.0/5.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   rate > 87.849976: Exploits (5.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   smean > 563
+|   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src <= 1
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   spkts <= 14: Normal (6.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   spkts > 14
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   rate <= 22.353731: Exploits (3.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   rate > 22.353731: DoS (8.0/2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src > 1: DoS (5.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   ct_srv_src > 3: Exploits (6.0/1.0)
+|   |   |   |   |   |   |   |   service > 4
+|   |   |   |   |   |   |   |   |   ct_flw_http_mthd <= 0
+|   |   |   |   |   |   |   |   |   |   smean <= 144: Worms (5.0)
+|   |   |   |   |   |   |   |   |   |   smean > 144: DoS (4.0)
+|   |   |   |   |   |   |   |   |   ct_flw_http_mthd > 0
+|   |   |   |   |   |   |   |   |   |   smean <= 134
+|   |   |   |   |   |   |   |   |   |   |   smean <= 127
+|   |   |   |   |   |   |   |   |   |   |   |   smean <= 126
+|   |   |   |   |   |   |   |   |   |   |   |   |   ct_src_dport_ltm <= 1: Exploits (41.0/6.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   ct_src_dport_ltm > 1
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 1164: Reconnaissance (2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes > 1164: Exploits (2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   smean > 126: Fuzzers (2.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   smean > 127
+|   |   |   |   |   |   |   |   |   |   |   |   smean <= 132: Worms (16.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   smean > 132: Exploits (2.0)
+|   |   |   |   |   |   |   |   |   |   smean > 134
+|   |   |   |   |   |   |   |   |   |   |   dbytes <= 304
+|   |   |   |   |   |   |   |   |   |   |   |   spkts <= 13
+|   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src <= 2: Exploits (34.0/13.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src > 2: DoS (2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   spkts > 13
+|   |   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 8712: Worms (2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   sbytes > 8712
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src <= 1
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   rate <= 74.426909: DoS (2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   rate > 74.426909: Exploits (4.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src > 1: DoS (4.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   dbytes > 304
+|   |   |   |   |   |   |   |   |   |   |   |   spkts <= 11: DoS (3.0)
+|   |   |   |   |   |   |   |   |   |   |   |   spkts > 11
+|   |   |   |   |   |   |   |   |   |   |   |   |   rate <= 32.928762: Exploits (7.0/2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   rate > 32.928762: DoS (7.0/1.0)
+|   |   |   |   |   |   dbytes > 354
+|   |   |   |   |   |   |   smean <= 48: Backdoor (16.0/3.0)
+|   |   |   |   |   |   |   smean > 48
+|   |   |   |   |   |   |   |   rate <= 17.550367
+|   |   |   |   |   |   |   |   |   service <= 4
+|   |   |   |   |   |   |   |   |   |   sloss <= 4
+|   |   |   |   |   |   |   |   |   |   |   dbytes <= 650: Exploits (3.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   dbytes > 650: Fuzzers (84.0/2.0)
+|   |   |   |   |   |   |   |   |   |   sloss > 4: DoS (2.0)
+|   |   |   |   |   |   |   |   |   service > 4: Generic (3.0/1.0)
+|   |   |   |   |   |   |   |   rate > 17.550367
+|   |   |   |   |   |   |   |   |   spkts <= 56
+|   |   |   |   |   |   |   |   |   |   rate <= 32.19581
+|   |   |   |   |   |   |   |   |   |   |   service <= 1
+|   |   |   |   |   |   |   |   |   |   |   |   smean <= 88
+|   |   |   |   |   |   |   |   |   |   |   |   |   dloss <= 3: Normal (15.0/4.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   dloss > 3: Exploits (2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   smean > 88
+|   |   |   |   |   |   |   |   |   |   |   |   |   dloss <= 1: Normal (2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   dloss > 1
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   dloss <= 2
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   dbytes <= 762: DoS (5.0/2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   dbytes > 762: Fuzzers (12.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   dloss > 2
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   spkts <= 21: Generic (3.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   spkts > 21: Fuzzers (2.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   service > 1
+|   |   |   |   |   |   |   |   |   |   |   |   service <= 4
+|   |   |   |   |   |   |   |   |   |   |   |   |   dmean <= 57: Fuzzers (3.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   dmean > 57: DoS (6.0/2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   service > 4
+|   |   |   |   |   |   |   |   |   |   |   |   |   dbytes <= 960: Generic (3.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   dbytes > 960: DoS (6.0)
+|   |   |   |   |   |   |   |   |   |   rate > 32.19581
+|   |   |   |   |   |   |   |   |   |   |   ct_srv_src <= 2
+|   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 886
+|   |   |   |   |   |   |   |   |   |   |   |   |   spkts <= 13
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   dmean <= 51
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   dbytes <= 376: Exploits (2.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   dbytes > 376: Backdoor (2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   dmean > 51: DoS (18.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   spkts > 13
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   rate <= 41.886962: Normal (2.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   rate > 41.886962: Exploits (3.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   sbytes > 886
+|   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src <= 1
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   rate <= 38.794669
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   dloss <= 1: Normal (3.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   dloss > 1: DoS (6.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   rate > 38.794669
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   rate <= 90.575654
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   dloss <= 1: DoS (4.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   dloss > 1
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   response_body_len <= 248: Exploits (32.0/10.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   response_body_len > 248: DoS (2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   rate > 90.575654: Exploits (9.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src > 1
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_src_dport_ltm <= 1
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   dmean <= 88
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   spkts <= 22
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   rate <= 40.08224: DoS (2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   rate > 40.08224: Exploits (7.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   spkts > 22: DoS (4.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   dmean > 88: Normal (2.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_src_dport_ltm > 1: Fuzzers (2.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   ct_srv_src > 2: Exploits (6.0)
+|   |   |   |   |   |   |   |   |   spkts > 56
+|   |   |   |   |   |   |   |   |   |   smean <= 1182
+|   |   |   |   |   |   |   |   |   |   |   smean <= 1136: Normal (7.0)
+|   |   |   |   |   |   |   |   |   |   |   smean > 1136
+|   |   |   |   |   |   |   |   |   |   |   |   rate <= 57.671354: Fuzzers (16.0)
+|   |   |   |   |   |   |   |   |   |   |   |   rate > 57.671354: Normal (6.0/1.0)
+|   |   |   |   |   |   |   |   |   |   smean > 1182
+|   |   |   |   |   |   |   |   |   |   |   service <= 2
+|   |   |   |   |   |   |   |   |   |   |   |   dmean <= 43
+|   |   |   |   |   |   |   |   |   |   |   |   |   spkts <= 112: Normal (3.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   spkts > 112: Fuzzers (2.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   dmean > 43: Exploits (4.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   service > 2: Exploits (5.0/1.0)
+|   |   |   |   |   ct_srv_dst > 1
+|   |   |   |   |   |   dttl <= 60: Normal (327.0)
+|   |   |   |   |   |   dttl > 60
+|   |   |   |   |   |   |   dbytes <= 664
+|   |   |   |   |   |   |   |   ct_dst_src_ltm <= 1
+|   |   |   |   |   |   |   |   |   ct_srv_src <= 2
+|   |   |   |   |   |   |   |   |   |   sbytes <= 564
+|   |   |   |   |   |   |   |   |   |   |   sbytes <= 562
+|   |   |   |   |   |   |   |   |   |   |   |   dloss <= 1
+|   |   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 532: Shellcode (8.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   sbytes > 532
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   smean <= 53
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src <= 1: Normal (4.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src > 1
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   rate <= 21.31467: Normal (4.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   rate > 21.31467: Fuzzers (2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   smean > 53: Shellcode (9.0/2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   dloss > 1: Backdoor (6.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   sbytes > 562: Reconnaissance (58.0)
+|   |   |   |   |   |   |   |   |   |   sbytes > 564
+|   |   |   |   |   |   |   |   |   |   |   ct_flw_http_mthd <= 0
+|   |   |   |   |   |   |   |   |   |   |   |   spkts <= 30
+|   |   |   |   |   |   |   |   |   |   |   |   |   smean <= 115
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   smean <= 59
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 582: Shellcode (3.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes > 582
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   rate <= 47.538484: Normal (7.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   rate > 47.538484: DoS (2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   smean > 59
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   service <= 2
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   spkts <= 11
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src <= 1
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   rate <= 15.107631: Fuzzers (3.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   rate > 15.107631
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 866: Shellcode (10.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes > 866: Backdoor (4.0/2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src > 1
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   smean <= 96
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 784
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 634: Shellcode (2.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes > 634: Fuzzers (5.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes > 784: Exploits (5.0/2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   smean > 96: Shellcode (4.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   spkts > 11: Exploits (2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   service > 2: DoS (2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   smean > 115
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src <= 1
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   dmean <= 44
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_dst <= 2: Normal (4.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_dst > 2: DoS (2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   dmean > 44
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   rate <= 18.474862: DoS (3.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   rate > 18.474862
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   rate <= 72.906578: Exploits (5.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   rate > 72.906578: DoS (3.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src > 1: DoS (8.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   spkts > 30
+|   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src <= 1: Normal (3.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src > 1: Fuzzers (5.0)
+|   |   |   |   |   |   |   |   |   |   |   ct_flw_http_mthd > 0
+|   |   |   |   |   |   |   |   |   |   |   |   dbytes <= 480
+|   |   |   |   |   |   |   |   |   |   |   |   |   smean <= 102
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   smean <= 71: Fuzzers (2.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   smean > 71: Reconnaissance (18.0/5.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   smean > 102
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 1836
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   dbytes <= 304
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   rate <= 74.868606: Worms (4.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   rate > 74.868606: Exploits (3.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   dbytes > 304: Exploits (2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes > 1836: DoS (5.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   dbytes > 480: Fuzzers (4.0)
+|   |   |   |   |   |   |   |   |   ct_srv_src > 2
+|   |   |   |   |   |   |   |   |   |   ct_srv_dst <= 2
+|   |   |   |   |   |   |   |   |   |   |   sbytes <= 564
+|   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 549
+|   |   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 522: Fuzzers (2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   sbytes > 522: Normal (3.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   sbytes > 549: Reconnaissance (12.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   sbytes > 564
+|   |   |   |   |   |   |   |   |   |   |   |   dbytes <= 526
+|   |   |   |   |   |   |   |   |   |   |   |   |   spkts <= 11
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   service <= 2
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   dbytes <= 304
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   rate <= 30.909581: Fuzzers (6.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   rate > 30.909581: Shellcode (4.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   dbytes > 304
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src <= 3: Fuzzers (4.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src > 3
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   smean <= 66: Fuzzers (3.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   smean > 66: Shellcode (5.0/2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   service > 2: Exploits (2.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   spkts > 11: DoS (7.0/2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   dbytes > 526: Fuzzers (8.0)
+|   |   |   |   |   |   |   |   |   |   ct_srv_dst > 2
+|   |   |   |   |   |   |   |   |   |   |   ct_src_dport_ltm <= 1: Fuzzers (215.0/21.0)
+|   |   |   |   |   |   |   |   |   |   |   ct_src_dport_ltm > 1
+|   |   |   |   |   |   |   |   |   |   |   |   rate <= 20.693224: Exploits (2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   rate > 20.693224: Fuzzers (2.0/1.0)
+|   |   |   |   |   |   |   |   ct_dst_src_ltm > 1
+|   |   |   |   |   |   |   |   |   smean <= 52
+|   |   |   |   |   |   |   |   |   |   smean <= 47
+|   |   |   |   |   |   |   |   |   |   |   spkts <= 9: DoS (10.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   spkts > 9: Backdoor (2.0/1.0)
+|   |   |   |   |   |   |   |   |   |   smean > 47
+|   |   |   |   |   |   |   |   |   |   |   dmean <= 47: Fuzzers (81.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   dmean > 47: Backdoor (2.0/1.0)
+|   |   |   |   |   |   |   |   |   smean > 52
+|   |   |   |   |   |   |   |   |   |   service <= 2
+|   |   |   |   |   |   |   |   |   |   |   ct_srv_dst <= 3
+|   |   |   |   |   |   |   |   |   |   |   |   smean <= 54: Normal (221.0/7.0)
+|   |   |   |   |   |   |   |   |   |   |   |   smean > 54
+|   |   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 574
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   smean <= 55: Fuzzers (7.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   smean > 55
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 568: Reconnaissance (14.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes > 568: Fuzzers (4.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   sbytes > 574
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   smean <= 244
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   smean <= 78
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src <= 3
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   rate <= 56.490454
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_dst_src_ltm <= 3
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 746
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   smean <= 60: Normal (12.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   smean > 60: Fuzzers (6.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes > 746: Normal (75.0/7.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_dst_src_ltm > 3: Fuzzers (2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   rate > 56.490454: Shellcode (3.0/2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src > 3: Fuzzers (26.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   smean > 78
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 1262
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   dbytes <= 304
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 942: DoS (2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes > 942: Exploits (2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   dbytes > 304: Exploits (3.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes > 1262
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   rate <= 35.521455: Fuzzers (9.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   rate > 35.521455: Exploits (2.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   smean > 244
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   smean <= 253: Normal (153.0/2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   smean > 253
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   smean <= 501
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 4172: Fuzzers (7.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes > 4172
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   spkts <= 13: Normal (6.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   spkts > 13: Fuzzers (6.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   smean > 501
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_src_dport_ltm <= 1: Normal (26.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_src_dport_ltm > 1: Exploits (3.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   ct_srv_dst > 3
+|   |   |   |   |   |   |   |   |   |   |   |   ct_dst_src_ltm <= 2
+|   |   |   |   |   |   |   |   |   |   |   |   |   ct_src_dport_ltm <= 1
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   dbytes <= 304
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src <= 5: Shellcode (3.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src > 5: Fuzzers (3.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   dbytes > 304
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 592: Reconnaissance (3.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes > 592: Fuzzers (3.0/2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   ct_src_dport_ltm > 1
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_dst <= 7: Fuzzers (82.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_dst > 7
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   rate <= 38.397651: Fuzzers (8.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   rate > 38.397651: Normal (4.0)
+|   |   |   |   |   |   |   |   |   |   |   |   ct_dst_src_ltm > 2
+|   |   |   |   |   |   |   |   |   |   |   |   |   smean <= 251
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 842
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src <= 6
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   smean <= 60
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   rate <= 29.436616: Normal (55.0/5.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   rate > 29.436616
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_dst_sport_ltm <= 1
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src <= 3: Normal (2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src > 3: Fuzzers (11.0/2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_dst_sport_ltm > 1: Normal (2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   smean > 60
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_dst <= 4
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 736: Fuzzers (5.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes > 736: Normal (5.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_dst > 4: Fuzzers (8.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src > 6: Fuzzers (46.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes > 842: Fuzzers (96.0/2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   smean > 251
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 2522: Normal (64.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes > 2522: Fuzzers (23.0)
+|   |   |   |   |   |   |   |   |   |   service > 2
+|   |   |   |   |   |   |   |   |   |   |   spkts <= 58
+|   |   |   |   |   |   |   |   |   |   |   |   ct_dst_sport_ltm <= 1
+|   |   |   |   |   |   |   |   |   |   |   |   |   ct_dst_src_ltm <= 2
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 770: Fuzzers (14.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes > 770
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 1234
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src <= 2: Reconnaissance (6.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src > 2: DoS (5.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes > 1234
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_dst <= 4: DoS (12.0/7.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_dst > 4: Fuzzers (4.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   ct_dst_src_ltm > 2: Fuzzers (48.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   ct_dst_sport_ltm > 1: Reconnaissance (2.0)
+|   |   |   |   |   |   |   |   |   |   |   spkts > 58
+|   |   |   |   |   |   |   |   |   |   |   |   ct_src_dport_ltm <= 1: Normal (7.0)
+|   |   |   |   |   |   |   |   |   |   |   |   ct_src_dport_ltm > 1: Fuzzers (2.0)
+|   |   |   |   |   |   |   dbytes > 664
+|   |   |   |   |   |   |   |   response_body_len <= 43
+|   |   |   |   |   |   |   |   |   service <= 4
+|   |   |   |   |   |   |   |   |   |   spkts <= 102
+|   |   |   |   |   |   |   |   |   |   |   ct_srv_src <= 2
+|   |   |   |   |   |   |   |   |   |   |   |   rate <= 24.328413: Fuzzers (83.0/5.0)
+|   |   |   |   |   |   |   |   |   |   |   |   rate > 24.328413
+|   |   |   |   |   |   |   |   |   |   |   |   |   ct_dst_src_ltm <= 1
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   dloss <= 3: Fuzzers (12.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   dloss > 3: Exploits (2.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   ct_dst_src_ltm > 1
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   service <= 1: Normal (8.0/2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   service > 1: Fuzzers (5.0)
+|   |   |   |   |   |   |   |   |   |   |   ct_srv_src > 2
+|   |   |   |   |   |   |   |   |   |   |   |   dloss <= 2
+|   |   |   |   |   |   |   |   |   |   |   |   |   ct_dst_src_ltm <= 3: Fuzzers (376.0/5.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   ct_dst_src_ltm > 3
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src <= 4: Normal (3.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src > 4
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   rate <= 36.349414: Fuzzers (19.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   rate > 36.349414: Normal (2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   dloss > 2
+|   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_dst <= 2
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src <= 4: Fuzzers (5.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_src > 4: DoS (3.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_dst > 2: Fuzzers (100.0/1.0)
+|   |   |   |   |   |   |   |   |   |   spkts > 102
+|   |   |   |   |   |   |   |   |   |   |   ct_srv_src <= 4: Normal (7.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   ct_srv_src > 4: Fuzzers (2.0)
+|   |   |   |   |   |   |   |   |   service > 4
+|   |   |   |   |   |   |   |   |   |   dloss <= 1
+|   |   |   |   |   |   |   |   |   |   |   ct_dst_src_ltm <= 1: Fuzzers (3.0)
+|   |   |   |   |   |   |   |   |   |   |   ct_dst_src_ltm > 1: Exploits (4.0/1.0)
+|   |   |   |   |   |   |   |   |   |   dloss > 1: DoS (3.0)
+|   |   |   |   |   |   |   |   response_body_len > 43
+|   |   |   |   |   |   |   |   |   sbytes <= 1066: DoS (2.0)
+|   |   |   |   |   |   |   |   |   sbytes > 1066: Exploits (5.0)
+|   |   dbytes > 1550
+|   |   |   rate <= 1.361132
+|   |   |   |   service <= 2: Fuzzers (9.0/1.0)
+|   |   |   |   service > 2: Normal (9.0)
+|   |   |   rate > 1.361132
+|   |   |   |   sttl <= 62
+|   |   |   |   |   ct_dst_src_ltm <= 1
+|   |   |   |   |   |   ct_flw_http_mthd <= 0
+|   |   |   |   |   |   |   dloss <= 848
+|   |   |   |   |   |   |   |   dloss <= 7
+|   |   |   |   |   |   |   |   |   dloss <= 1: DoS (6.0)
+|   |   |   |   |   |   |   |   |   dloss > 1
+|   |   |   |   |   |   |   |   |   |   service <= 4
+|   |   |   |   |   |   |   |   |   |   |   ct_src_dport_ltm <= 1
+|   |   |   |   |   |   |   |   |   |   |   |   sloss <= 1: Exploits (8.0)
+|   |   |   |   |   |   |   |   |   |   |   |   sloss > 1
+|   |   |   |   |   |   |   |   |   |   |   |   |   service <= 1
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   rate <= 61.437776
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sloss <= 6
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   spkts <= 14
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   spkts <= 11
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_dst <= 1
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   smean <= 88: DoS (13.0/5.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   smean > 88: Exploits (3.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_dst > 1: Exploits (7.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   spkts > 11
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   dbytes <= 2550: DoS (2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   dbytes > 2550: Exploits (2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   spkts > 14
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   smean <= 56
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   dbytes <= 3490: DoS (9.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   dbytes > 3490: Exploits (2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   smean > 56
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   rate <= 37.94741: DoS (2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   rate > 37.94741: Exploits (2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sloss > 6: Exploits (2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   rate > 61.437776: Exploits (10.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   service > 1: DoS (2.0)
+|   |   |   |   |   |   |   |   |   |   |   ct_src_dport_ltm > 1: Exploits (4.0)
+|   |   |   |   |   |   |   |   |   |   service > 4
+|   |   |   |   |   |   |   |   |   |   |   sloss <= 326: DoS (14.0)
+|   |   |   |   |   |   |   |   |   |   |   sloss > 326: Exploits (4.0/1.0)
+|   |   |   |   |   |   |   |   dloss > 7: Exploits (369.0/84.0)
+|   |   |   |   |   |   |   dloss > 848: DoS (9.0)
+|   |   |   |   |   |   ct_flw_http_mthd > 0
+|   |   |   |   |   |   |   service <= 2
+|   |   |   |   |   |   |   |   dbytes <= 5522: DoS (5.0)
+|   |   |   |   |   |   |   |   dbytes > 5522: Exploits (2.0/1.0)
+|   |   |   |   |   |   |   service > 2
+|   |   |   |   |   |   |   |   smean <= 95
+|   |   |   |   |   |   |   |   |   ct_srv_src <= 3
+|   |   |   |   |   |   |   |   |   |   ct_src_dport_ltm <= 1
+|   |   |   |   |   |   |   |   |   |   |   ct_srv_src <= 1
+|   |   |   |   |   |   |   |   |   |   |   |   ct_srv_dst <= 1: Exploits (189.0/80.0)
+|   |   |   |   |   |   |   |   |   |   |   |   ct_srv_dst > 1
+|   |   |   |   |   |   |   |   |   |   |   |   |   response_body_len <= 814: Exploits (3.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   response_body_len > 814
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   dbytes <= 24150: DoS (5.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   dbytes > 24150: Exploits (2.0)
+|   |   |   |   |   |   |   |   |   |   |   ct_srv_src > 1
+|   |   |   |   |   |   |   |   |   |   |   |   rate <= 66.878299
+|   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_dst <= 1
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   rate <= 17.286503: Exploits (4.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   rate > 17.286503
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   response_body_len <= 1979: DoS (13.0/2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   response_body_len > 1979: Exploits (4.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   ct_srv_dst > 1: DoS (4.0)
+|   |   |   |   |   |   |   |   |   |   |   |   rate > 66.878299: Exploits (37.0/7.0)
+|   |   |   |   |   |   |   |   |   |   ct_src_dport_ltm > 1
+|   |   |   |   |   |   |   |   |   |   |   spkts <= 14
+|   |   |   |   |   |   |   |   |   |   |   |   spkts <= 11
+|   |   |   |   |   |   |   |   |   |   |   |   |   rate <= 87.938479: DoS (6.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   rate > 87.938479: Exploits (3.0)
+|   |   |   |   |   |   |   |   |   |   |   |   spkts > 11: Exploits (5.0/2.0)
+|   |   |   |   |   |   |   |   |   |   |   spkts > 14: DoS (3.0)
+|   |   |   |   |   |   |   |   |   ct_srv_src > 3: Exploits (4.0)
+|   |   |   |   |   |   |   |   smean > 95
+|   |   |   |   |   |   |   |   |   sloss <= 2: Generic (9.0/3.0)
+|   |   |   |   |   |   |   |   |   sloss > 2: Exploits (31.0/7.0)
+|   |   |   |   |   ct_dst_src_ltm > 1
+|   |   |   |   |   |   ct_src_dport_ltm <= 3
+|   |   |   |   |   |   |   ct_dst_sport_ltm <= 1
+|   |   |   |   |   |   |   |   ct_dst_src_ltm <= 8
+|   |   |   |   |   |   |   |   |   response_body_len <= 3192
+|   |   |   |   |   |   |   |   |   |   smean <= 1251: Exploits (193.0/12.0)
+|   |   |   |   |   |   |   |   |   |   smean > 1251: DoS (3.0)
+|   |   |   |   |   |   |   |   |   response_body_len > 3192
+|   |   |   |   |   |   |   |   |   |   smean <= 99
+|   |   |   |   |   |   |   |   |   |   |   ct_srv_dst <= 1: Exploits (6.0)
+|   |   |   |   |   |   |   |   |   |   |   ct_srv_dst > 1
+|   |   |   |   |   |   |   |   |   |   |   |   ct_src_dport_ltm <= 1
+|   |   |   |   |   |   |   |   |   |   |   |   |   dmean <= 746: Exploits (3.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   dmean > 746: DoS (5.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   ct_src_dport_ltm > 1: Exploits (4.0)
+|   |   |   |   |   |   |   |   |   |   smean > 99: Generic (2.0)
+|   |   |   |   |   |   |   |   ct_dst_src_ltm > 8: DoS (3.0)
+|   |   |   |   |   |   |   ct_dst_sport_ltm > 1
+|   |   |   |   |   |   |   |   rate <= 111.656518
+|   |   |   |   |   |   |   |   |   dmean <= 678: Exploits (6.0)
+|   |   |   |   |   |   |   |   |   dmean > 678: Reconnaissance (2.0)
+|   |   |   |   |   |   |   |   rate > 111.656518: DoS (7.0/1.0)
+|   |   |   |   |   |   ct_src_dport_ltm > 3: Normal (4.0/1.0)
+|   |   |   |   sttl > 62
+|   |   |   |   |   dbytes <= 242434
+|   |   |   |   |   |   dloss <= 15
+|   |   |   |   |   |   |   ct_dst_sport_ltm <= 1
+|   |   |   |   |   |   |   |   rate <= 29.455556
+|   |   |   |   |   |   |   |   |   response_body_len <= 403: DoS (83.0/5.0)
+|   |   |   |   |   |   |   |   |   response_body_len > 403
+|   |   |   |   |   |   |   |   |   |   dloss <= 3: DoS (3.0/1.0)
+|   |   |   |   |   |   |   |   |   |   dloss > 3: Generic (2.0)
+|   |   |   |   |   |   |   |   rate > 29.455556
+|   |   |   |   |   |   |   |   |   service <= 7
+|   |   |   |   |   |   |   |   |   |   smean <= 134: DoS (34.0/5.0)
+|   |   |   |   |   |   |   |   |   |   smean > 134
+|   |   |   |   |   |   |   |   |   |   |   sbytes <= 6027: Exploits (21.0/5.0)
+|   |   |   |   |   |   |   |   |   |   |   sbytes > 6027: DoS (24.0/5.0)
+|   |   |   |   |   |   |   |   |   service > 7
+|   |   |   |   |   |   |   |   |   |   dmean <= 88: DoS (29.0)
+|   |   |   |   |   |   |   |   |   |   dmean > 88
+|   |   |   |   |   |   |   |   |   |   |   rate <= 49.785739: DoS (6.0/2.0)
+|   |   |   |   |   |   |   |   |   |   |   rate > 49.785739: Generic (2.0)
+|   |   |   |   |   |   |   ct_dst_sport_ltm > 1
+|   |   |   |   |   |   |   |   dloss <= 7: DoS (25.0)
+|   |   |   |   |   |   |   |   dloss > 7: Fuzzers (3.0/1.0)
+|   |   |   |   |   |   dloss > 15: Generic (4.0/1.0)
+|   |   |   |   |   dbytes > 242434
+|   |   |   |   |   |   dmean <= 1326: Worms (7.0)
+|   |   |   |   |   |   dmean > 1326: Exploits (2.0/1.0)
+ct_dst_src_ltm > 10
+|   service <= 1
+|   |   ct_dst_sport_ltm <= 8
+|   |   |   smean <= 172
+|   |   |   |   ct_srv_dst <= 5
+|   |   |   |   |   sbytes <= 162: Exploits (24.0/12.0)
+|   |   |   |   |   sbytes > 162: Reconnaissance (8.0)
+|   |   |   |   ct_srv_dst > 5
+|   |   |   |   |   ct_src_dport_ltm <= 11
+|   |   |   |   |   |   dbytes <= 216: Normal (155.0/2.0)
+|   |   |   |   |   |   dbytes > 216: Fuzzers (4.0)
+|   |   |   |   |   ct_src_dport_ltm > 11: Fuzzers (10.0)
+|   |   |   smean > 172
+|   |   |   |   ct_srv_dst <= 5: Shellcode (2.0/1.0)
+|   |   |   |   ct_srv_dst > 5: Fuzzers (112.0)
+|   |   ct_dst_sport_ltm > 8: Backdoor (42.0/28.0)
+|   service > 1
+|   |   rate <= 27777.7768
+|   |   |   proto <= 114
+|   |   |   |   ct_srv_src <= 11
+|   |   |   |   |   ct_srv_src <= 6
+|   |   |   |   |   |   rate <= 44.729827: Reconnaissance (2.0)
+|   |   |   |   |   |   rate > 44.729827: Exploits (3.0/1.0)
+|   |   |   |   |   ct_srv_src > 6: Normal (2.0)
+|   |   |   |   ct_srv_src > 11: Fuzzers (11.0)
+|   |   |   proto > 114: Generic (7.0)
+|   |   rate > 27777.7768: Generic (3934.0)
+
+Number of Leaves  : 	461
+
+Size of the tree : 	921
+
+
+Time taken to build model: 1.19 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances       18475               81.0343 %
+Incorrectly Classified Instances      4324               18.9657 %
+Kappa statistic                          0.7641
+Mean absolute error                      0.0474
+Root mean squared error                  0.1631
+Relative absolute error                 29.155  %
+Root relative squared error             57.2068 %
+Total Number of Instances            22799     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.983    0.010    0.977      0.983    0.980      0.971    0.993     0.987     Normal
+                 0.172    0.011    0.293      0.172    0.216      0.209    0.924     0.259     Backdoor
+                 0.214    0.012    0.361      0.214    0.269      0.261    0.938     0.332     Analysis
+                 0.795    0.010    0.896      0.795    0.843      0.829    0.955     0.819     Fuzzers
+                 0.714    0.006    0.651      0.714    0.681      0.676    0.918     0.570     Shellcode
+                 0.719    0.005    0.893      0.719    0.797      0.791    0.954     0.800     Reconnaissance
+                 0.402    0.026    0.636      0.402    0.493      0.464    0.888     0.498     Exploits
+                 0.802    0.141    0.553      0.802    0.655      0.578    0.902     0.606     DoS
+                 0.545    0.001    0.667      0.545    0.600      0.602    0.840     0.436     Worms
+                 0.982    0.001    0.995      0.982    0.988      0.986    0.993     0.989     Generic
+Weighted Avg.    0.810    0.033    0.816      0.810    0.805      0.782    0.955     0.797     
+
+=== Confusion Matrix ===
+
+    a    b    c    d    e    f    g    h    i    j   <-- classified as
+ 7041    1    0   62   17    1   10   30    1    2 |    a = Normal
+    4  100  127    3    6    1   10  331    0    1 |    b = Backdoor
+    0  105  145    3    0    0    1  423    0    0 |    c = Analysis
+   79    6    6 1725   19    8   25  299    2    0 |    d = Fuzzers
+   14    2    0   33  270    5   19   35    0    0 |    e = Shellcode
+    1    1    0    9    7  956   60  293    1    1 |    f = Reconnaissance
+   32    8    0   34   21   69  914 1184    2    7 |    g = Exploits
+   26  117  124   47   70   30  383 3279    4    9 |    h = DoS
+    3    0    0    3    3    1    4    5   24    1 |    i = Worms
+    4    1    0    6    2    0   12   46    2 4021 |    j = Generic
+

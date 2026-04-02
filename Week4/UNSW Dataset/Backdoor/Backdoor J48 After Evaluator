@@ -1,0 +1,103 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.trees.J48 -C 0.25 -M 2
+Relation:     DF_unsw_test_p_weka-weka.filters.unsupervised.attribute.Remove-R1,3-6,8-10,12-13,15-42
+Instances:    37583
+Attributes:   5
+              proto
+              sbytes
+              dttl
+              sloss
+              attack_cat
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+J48 pruned tree
+------------------
+
+proto <= 117
+|   proto <= 110
+|   |   sbytes <= 92
+|   |   |   proto <= 23: Normal (959.0)
+|   |   |   proto > 23
+|   |   |   |   proto <= 55: Normal (22.0)
+|   |   |   |   proto > 55: Backdoor (7.0)
+|   |   sbytes > 92
+|   |   |   sbytes <= 372
+|   |   |   |   sbytes <= 192
+|   |   |   |   |   sbytes <= 182: Backdoor (37.0/3.0)
+|   |   |   |   |   sbytes > 182: Normal (28.0)
+|   |   |   |   sbytes > 192: Backdoor (212.0)
+|   |   |   sbytes > 372
+|   |   |   |   sbytes <= 390: Normal (38.0)
+|   |   |   |   sbytes > 390
+|   |   |   |   |   proto <= 56: Normal (5.0)
+|   |   |   |   |   proto > 56: Backdoor (29.0)
+|   proto > 110
+|   |   dttl <= 31
+|   |   |   dttl <= 0
+|   |   |   |   proto <= 116
+|   |   |   |   |   sbytes <= 190: Normal (1300.0)
+|   |   |   |   |   sbytes > 190
+|   |   |   |   |   |   proto <= 111: Normal (356.0)
+|   |   |   |   |   |   proto > 111: Backdoor (12.0)
+|   |   |   |   proto > 116: Normal (3543.0)
+|   |   |   dttl > 0: Normal (16747.0)
+|   |   dttl > 31
+|   |   |   sbytes <= 478
+|   |   |   |   sloss <= 0
+|   |   |   |   |   proto <= 114: Normal (7.0)
+|   |   |   |   |   proto > 114: Backdoor (6.0)
+|   |   |   |   sloss > 0: Backdoor (20.0)
+|   |   |   sbytes > 478: Normal (14023.0/31.0)
+proto > 117: Backdoor (232.0)
+
+Number of Leaves  : 	19
+
+Size of the tree : 	37
+
+
+Time taken to build model: 0.25 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances       37549               99.9095 %
+Incorrectly Classified Instances        34                0.0905 %
+Kappa statistic                          0.9697
+Mean absolute error                      0.0004
+Root mean squared error                  0.0135
+Relative absolute error                  5.8276 %
+Root relative squared error             24.3508 %
+Total Number of Instances            37583     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 1.000    0.053    0.999      1.000    1.000      0.970    0.988     1.000     Normal
+                 0.947    0.000    0.995      0.947    0.970      0.970    0.988     0.950     Backdoor
+                 ?        0.000    ?          ?        ?          ?        ?         ?         Analysis
+                 ?        0.000    ?          ?        ?          ?        ?         ?         Fuzzers
+                 ?        0.000    ?          ?        ?          ?        ?         ?         Shellcode
+                 ?        0.000    ?          ?        ?          ?        ?         ?         Reconnaissance
+                 ?        0.000    ?          ?        ?          ?        ?         ?         Exploits
+                 ?        0.000    ?          ?        ?          ?        ?         ?         DoS
+                 ?        0.000    ?          ?        ?          ?        ?         ?         Worms
+                 ?        0.000    ?          ?        ?          ?        ?         ?         Generic
+Weighted Avg.    0.999    0.052    0.999      0.999    0.999      0.970    0.988     0.999     
+
+=== Confusion Matrix ===
+
+     a     b     c     d     e     f     g     h     i     j   <-- classified as
+ 36997     3     0     0     0     0     0     0     0     0 |     a = Normal
+    31   552     0     0     0     0     0     0     0     0 |     b = Backdoor
+     0     0     0     0     0     0     0     0     0     0 |     c = Analysis
+     0     0     0     0     0     0     0     0     0     0 |     d = Fuzzers
+     0     0     0     0     0     0     0     0     0     0 |     e = Shellcode
+     0     0     0     0     0     0     0     0     0     0 |     f = Reconnaissance
+     0     0     0     0     0     0     0     0     0     0 |     g = Exploits
+     0     0     0     0     0     0     0     0     0     0 |     h = DoS
+     0     0     0     0     0     0     0     0     0     0 |     i = Worms
+     0     0     0     0     0     0     0     0     0     0 |     j = Generic
+

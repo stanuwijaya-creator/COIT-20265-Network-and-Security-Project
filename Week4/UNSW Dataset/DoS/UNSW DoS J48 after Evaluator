@@ -1,0 +1,272 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.trees.J48 -C 0.25 -M 2
+Relation:     DF_unsw_test_p_weka-weka.filters.unsupervised.attribute.Remove-R5-6,9,11-12,14-17,19-29,31-35,39-42
+Instances:    41089
+Attributes:   14
+              dur
+              proto
+              service
+              state
+              sbytes
+              dbytes
+              sttl
+              dload
+              sjit
+              response_body_len
+              ct_dst_src_ltm
+              is_ftp_login
+              ct_ftp_cmd
+              attack_cat
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+J48 pruned tree
+------------------
+
+proto <= 117
+|   proto <= 110
+|   |   sttl <= 62
+|   |   |   ct_dst_src_ltm <= 2: Normal (1025.0)
+|   |   |   ct_dst_src_ltm > 2: DoS (36.0)
+|   |   sttl > 62
+|   |   |   proto <= 41
+|   |   |   |   proto <= 40: DoS (445.0)
+|   |   |   |   proto > 40: Normal (30.0)
+|   |   |   proto > 41: DoS (1048.0)
+|   proto > 110
+|   |   sttl <= 60: Normal (16797.0)
+|   |   sttl > 60
+|   |   |   dbytes <= 1472
+|   |   |   |   state <= 24802
+|   |   |   |   |   ct_dst_src_ltm <= 1
+|   |   |   |   |   |   state <= 17047
+|   |   |   |   |   |   |   service <= 3
+|   |   |   |   |   |   |   |   dur <= 0.650508
+|   |   |   |   |   |   |   |   |   service <= 0
+|   |   |   |   |   |   |   |   |   |   sbytes <= 2566
+|   |   |   |   |   |   |   |   |   |   |   state <= 11639
+|   |   |   |   |   |   |   |   |   |   |   |   sttl <= 62
+|   |   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 896: DoS (9.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   sbytes > 896: Normal (16.0)
+|   |   |   |   |   |   |   |   |   |   |   |   sttl > 62
+|   |   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 104
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 98
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   proto <= 114: Normal (22.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   proto > 114
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 78
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 75: DoS (3.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes > 75: Normal (27.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes > 78: DoS (8.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes > 98: Normal (180.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   sbytes > 104
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 142: DoS (5.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes > 142
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   proto <= 114
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 784: Normal (54.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes > 784
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 1602: DoS (5.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes > 1602: Normal (12.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   proto > 114
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 828
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 504: Normal (30.0/5.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes > 504: DoS (31.0/13.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes > 828
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 1124: Normal (86.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes > 1124
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 1298: DoS (8.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes > 1298: Normal (33.0/6.0)
+|   |   |   |   |   |   |   |   |   |   |   state > 11639
+|   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 508: DoS (10.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   sbytes > 508
+|   |   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 578: Normal (22.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   sbytes > 578
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   dbytes <= 304
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   dur <= 0.356447: Normal (3.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   dur > 0.356447: DoS (16.0/4.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   dbytes > 304
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sjit <= 3433.048548: DoS (3.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sjit > 3433.048548
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   dur <= 0.599549: Normal (4.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   dur > 0.599549: DoS (3.0)
+|   |   |   |   |   |   |   |   |   |   sbytes > 2566
+|   |   |   |   |   |   |   |   |   |   |   dur <= 0.579114: DoS (26.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   dur > 0.579114: Normal (6.0/2.0)
+|   |   |   |   |   |   |   |   |   service > 0: DoS (26.0)
+|   |   |   |   |   |   |   |   dur > 0.650508
+|   |   |   |   |   |   |   |   |   sbytes <= 518
+|   |   |   |   |   |   |   |   |   |   state <= 5142
+|   |   |   |   |   |   |   |   |   |   |   sbytes <= 478: DoS (4.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   sbytes > 478: Normal (18.0/2.0)
+|   |   |   |   |   |   |   |   |   |   state > 5142: DoS (8.0)
+|   |   |   |   |   |   |   |   |   sbytes > 518
+|   |   |   |   |   |   |   |   |   |   sbytes <= 1024: Normal (1070.0/13.0)
+|   |   |   |   |   |   |   |   |   |   sbytes > 1024
+|   |   |   |   |   |   |   |   |   |   |   dbytes <= 496
+|   |   |   |   |   |   |   |   |   |   |   |   dbytes <= 444
+|   |   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 1482: DoS (20.0/8.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   sbytes > 1482
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 9663: Normal (225.0/7.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes > 9663
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 17122: DoS (8.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes > 17122: Normal (24.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   dbytes > 444: DoS (4.0)
+|   |   |   |   |   |   |   |   |   |   |   dbytes > 496: Normal (246.0/7.0)
+|   |   |   |   |   |   |   service > 3
+|   |   |   |   |   |   |   |   dbytes <= 526: DoS (60.0/4.0)
+|   |   |   |   |   |   |   |   dbytes > 526
+|   |   |   |   |   |   |   |   |   response_body_len <= 95
+|   |   |   |   |   |   |   |   |   |   dbytes <= 826: Normal (32.0)
+|   |   |   |   |   |   |   |   |   |   dbytes > 826: DoS (14.0)
+|   |   |   |   |   |   |   |   |   response_body_len > 95
+|   |   |   |   |   |   |   |   |   |   sbytes <= 932: Normal (99.0/1.0)
+|   |   |   |   |   |   |   |   |   |   sbytes > 932: DoS (2.0)
+|   |   |   |   |   |   state > 17047
+|   |   |   |   |   |   |   response_body_len <= 117
+|   |   |   |   |   |   |   |   sttl <= 62: DoS (92.0/1.0)
+|   |   |   |   |   |   |   |   sttl > 62
+|   |   |   |   |   |   |   |   |   dur <= 0.530083: DoS (125.0/12.0)
+|   |   |   |   |   |   |   |   |   dur > 0.530083
+|   |   |   |   |   |   |   |   |   |   dbytes <= 870
+|   |   |   |   |   |   |   |   |   |   |   dbytes <= 536: DoS (4.0)
+|   |   |   |   |   |   |   |   |   |   |   dbytes > 536: Normal (50.0/3.0)
+|   |   |   |   |   |   |   |   |   |   dbytes > 870: DoS (14.0)
+|   |   |   |   |   |   |   response_body_len > 117
+|   |   |   |   |   |   |   |   sbytes <= 788: DoS (11.0)
+|   |   |   |   |   |   |   |   sbytes > 788
+|   |   |   |   |   |   |   |   |   state <= 22160: Normal (186.0/4.0)
+|   |   |   |   |   |   |   |   |   state > 22160
+|   |   |   |   |   |   |   |   |   |   sbytes <= 816: Normal (28.0/4.0)
+|   |   |   |   |   |   |   |   |   |   sbytes > 816
+|   |   |   |   |   |   |   |   |   |   |   response_body_len <= 193: Normal (10.0)
+|   |   |   |   |   |   |   |   |   |   |   response_body_len > 193
+|   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 834
+|   |   |   |   |   |   |   |   |   |   |   |   |   sjit <= 5009.403928
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   sjit <= 4371.031303
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes <= 824: DoS (3.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   sbytes > 824: Normal (4.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   sjit > 4371.031303: Normal (5.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   sjit > 5009.403928: DoS (3.0)
+|   |   |   |   |   |   |   |   |   |   |   |   sbytes > 834: DoS (11.0/1.0)
+|   |   |   |   |   ct_dst_src_ltm > 1
+|   |   |   |   |   |   sbytes <= 424
+|   |   |   |   |   |   |   sbytes <= 110: Normal (2558.0/5.0)
+|   |   |   |   |   |   |   sbytes > 110
+|   |   |   |   |   |   |   |   ct_dst_src_ltm <= 6
+|   |   |   |   |   |   |   |   |   proto <= 116
+|   |   |   |   |   |   |   |   |   |   sbytes <= 190: Normal (5.0)
+|   |   |   |   |   |   |   |   |   |   sbytes > 190
+|   |   |   |   |   |   |   |   |   |   |   sbytes <= 370: DoS (60.0)
+|   |   |   |   |   |   |   |   |   |   |   sbytes > 370: Normal (2.0)
+|   |   |   |   |   |   |   |   |   proto > 116
+|   |   |   |   |   |   |   |   |   |   sttl <= 254
+|   |   |   |   |   |   |   |   |   |   |   sbytes <= 158
+|   |   |   |   |   |   |   |   |   |   |   |   ct_dst_src_ltm <= 2
+|   |   |   |   |   |   |   |   |   |   |   |   |   dur <= 0.156068: DoS (9.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   dur > 0.156068: Normal (2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   ct_dst_src_ltm > 2: Normal (15.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   sbytes > 158: Normal (187.0/2.0)
+|   |   |   |   |   |   |   |   |   |   sttl > 254: DoS (6.0)
+|   |   |   |   |   |   |   |   ct_dst_src_ltm > 6: Normal (424.0)
+|   |   |   |   |   |   sbytes > 424
+|   |   |   |   |   |   |   service <= 0: Normal (11192.0/18.0)
+|   |   |   |   |   |   |   service > 0
+|   |   |   |   |   |   |   |   dur <= 0.359749
+|   |   |   |   |   |   |   |   |   ct_dst_src_ltm <= 2: DoS (13.0)
+|   |   |   |   |   |   |   |   |   ct_dst_src_ltm > 2: Normal (17.0/1.0)
+|   |   |   |   |   |   |   |   dur > 0.359749
+|   |   |   |   |   |   |   |   |   dbytes <= 440
+|   |   |   |   |   |   |   |   |   |   ct_dst_src_ltm <= 2
+|   |   |   |   |   |   |   |   |   |   |   dbytes <= 304: Normal (6.0/2.0)
+|   |   |   |   |   |   |   |   |   |   |   dbytes > 304: DoS (7.0)
+|   |   |   |   |   |   |   |   |   |   ct_dst_src_ltm > 2: Normal (22.0/1.0)
+|   |   |   |   |   |   |   |   |   dbytes > 440
+|   |   |   |   |   |   |   |   |   |   response_body_len <= 75
+|   |   |   |   |   |   |   |   |   |   |   sttl <= 62: DoS (5.0)
+|   |   |   |   |   |   |   |   |   |   |   sttl > 62
+|   |   |   |   |   |   |   |   |   |   |   |   dbytes <= 1054: Normal (330.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   |   dbytes > 1054
+|   |   |   |   |   |   |   |   |   |   |   |   |   dur <= 1.613462: DoS (3.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   dur > 1.613462: Normal (4.0)
+|   |   |   |   |   |   |   |   |   |   response_body_len > 75: Normal (1847.0/3.0)
+|   |   |   |   state > 24802
+|   |   |   |   |   ct_dst_src_ltm <= 1
+|   |   |   |   |   |   service <= 1
+|   |   |   |   |   |   |   response_body_len <= 54: DoS (9.0)
+|   |   |   |   |   |   |   response_body_len > 54: Normal (2.0)
+|   |   |   |   |   |   service > 1: DoS (78.0)
+|   |   |   |   |   ct_dst_src_ltm > 1
+|   |   |   |   |   |   dur <= 0.334982: DoS (11.0)
+|   |   |   |   |   |   dur > 0.334982: Normal (17.0/1.0)
+|   |   |   dbytes > 1472
+|   |   |   |   state <= 2337
+|   |   |   |   |   dbytes <= 2160: DoS (2.0)
+|   |   |   |   |   dbytes > 2160: Normal (21.0)
+|   |   |   |   state > 2337
+|   |   |   |   |   service <= 0
+|   |   |   |   |   |   sbytes <= 8320
+|   |   |   |   |   |   |   ct_dst_src_ltm <= 3: DoS (93.0)
+|   |   |   |   |   |   |   ct_dst_src_ltm > 3: Normal (4.0/1.0)
+|   |   |   |   |   |   sbytes > 8320
+|   |   |   |   |   |   |   dur <= 18.44595
+|   |   |   |   |   |   |   |   sttl <= 62: DoS (19.0)
+|   |   |   |   |   |   |   |   sttl > 62
+|   |   |   |   |   |   |   |   |   sbytes <= 450006
+|   |   |   |   |   |   |   |   |   |   sbytes <= 91618
+|   |   |   |   |   |   |   |   |   |   |   sbytes <= 9464: Normal (8.0)
+|   |   |   |   |   |   |   |   |   |   |   sbytes > 9464: DoS (7.0)
+|   |   |   |   |   |   |   |   |   |   sbytes > 91618: Normal (35.0)
+|   |   |   |   |   |   |   |   |   sbytes > 450006: DoS (5.0)
+|   |   |   |   |   |   |   dur > 18.44595: DoS (39.0)
+|   |   |   |   |   service > 0: DoS (330.0/3.0)
+proto > 117: DoS (1286.0)
+
+Number of Leaves  : 	99
+
+Size of the tree : 	197
+
+
+Time taken to build model: 1.61 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances       40821               99.3478 %
+Incorrectly Classified Instances       268                0.6522 %
+Kappa statistic                          0.9632
+Mean absolute error                      0.0018
+Root mean squared error                  0.0341
+Relative absolute error                  5.1442 %
+Root relative squared error             25.4752 %
+Total Number of Instances            41089     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.998    0.045    0.995      0.998    0.996      0.963    0.993     0.999     Normal
+                 ?        0.000    ?          ?        ?          ?        ?         ?         Backdoor
+                 ?        0.000    ?          ?        ?          ?        ?         ?         Analysis
+                 ?        0.000    ?          ?        ?          ?        ?         ?         Fuzzers
+                 ?        0.000    ?          ?        ?          ?        ?         ?         Shellcode
+                 ?        0.000    ?          ?        ?          ?        ?         ?         Reconnaissance
+                 ?        0.000    ?          ?        ?          ?        ?         ?         Exploits
+                 0.955    0.002    0.979      0.955    0.967      0.963    0.993     0.978     DoS
+                 ?        0.000    ?          ?        ?          ?        ?         ?         Worms
+                 ?        0.000    ?          ?        ?          ?        ?         ?         Generic
+Weighted Avg.    0.993    0.041    0.993      0.993    0.993      0.963    0.993     0.997     
+
+=== Confusion Matrix ===
+
+     a     b     c     d     e     f     g     h     i     j   <-- classified as
+ 36916     0     0     0     0     0     0    84     0     0 |     a = Normal
+     0     0     0     0     0     0     0     0     0     0 |     b = Backdoor
+     0     0     0     0     0     0     0     0     0     0 |     c = Analysis
+     0     0     0     0     0     0     0     0     0     0 |     d = Fuzzers
+     0     0     0     0     0     0     0     0     0     0 |     e = Shellcode
+     0     0     0     0     0     0     0     0     0     0 |     f = Reconnaissance
+     0     0     0     0     0     0     0     0     0     0 |     g = Exploits
+   184     0     0     0     0     0     0  3905     0     0 |     h = DoS
+     0     0     0     0     0     0     0     0     0     0 |     i = Worms
+     0     0     0     0     0     0     0     0     0     0 |     j = Generic
+

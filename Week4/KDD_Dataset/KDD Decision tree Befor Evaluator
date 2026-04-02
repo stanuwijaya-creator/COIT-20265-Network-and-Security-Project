@@ -1,0 +1,801 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.trees.J48 -C 0.25 -M 2
+Relation:     KDDTest
+Instances:    22544
+Attributes:   42
+              duration
+              protocol_type
+              service
+              flag
+              src_bytes
+              dst_bytes
+              land
+              wrong_fragment
+              urgent
+              hot
+              num_failed_logins
+              logged_in
+              num_compromised
+              root_shell
+              su_attempted
+              num_root
+              num_file_creations
+              num_shells
+              num_access_files
+              num_outbound_cmds
+              is_host_login
+              is_guest_login
+              count
+              srv_count
+              serror_rate
+              srv_serror_rate
+              rerror_rate
+              srv_rerror_rate
+              same_srv_rate
+              diff_srv_rate
+              srv_diff_host_rate
+              dst_host_count
+              dst_host_srv_count
+              dst_host_same_srv_rate
+              dst_host_diff_srv_rate
+              dst_host_same_src_port_rate
+              dst_host_srv_diff_host_rate
+              dst_host_serror_rate
+              dst_host_srv_serror_rate
+              dst_host_rerror_rate
+              dst_host_srv_rerror_rate
+              class
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+J48 pruned tree
+------------------
+
+src_bytes <= 32
+|   protocol_type = tcp
+|   |   dst_host_same_src_port_rate <= 0
+|   |   |   count <= 4
+|   |   |   |   dst_host_diff_srv_rate <= 0.83
+|   |   |   |   |   service = aol: anomaly (0.0)
+|   |   |   |   |   service = auth: normal (4.0/1.0)
+|   |   |   |   |   service = bgp: anomaly (0.0)
+|   |   |   |   |   service = courier: anomaly (0.0)
+|   |   |   |   |   service = csnet_ns: anomaly (0.0)
+|   |   |   |   |   service = ctf: anomaly (0.0)
+|   |   |   |   |   service = daytime: anomaly (0.0)
+|   |   |   |   |   service = discard: anomaly (0.0)
+|   |   |   |   |   service = domain: anomaly (0.0)
+|   |   |   |   |   service = domain_u: anomaly (0.0)
+|   |   |   |   |   service = echo: anomaly (0.0)
+|   |   |   |   |   service = eco_i: anomaly (0.0)
+|   |   |   |   |   service = ecr_i: anomaly (0.0)
+|   |   |   |   |   service = efs: anomaly (0.0)
+|   |   |   |   |   service = exec: anomaly (0.0)
+|   |   |   |   |   service = finger
+|   |   |   |   |   |   flag = OTH: normal (0.0)
+|   |   |   |   |   |   flag = REJ: normal (0.0)
+|   |   |   |   |   |   flag = RSTO: normal (0.0)
+|   |   |   |   |   |   flag = RSTOS0: normal (0.0)
+|   |   |   |   |   |   flag = RSTR: normal (0.0)
+|   |   |   |   |   |   flag = S0: anomaly (3.0)
+|   |   |   |   |   |   flag = S1: normal (0.0)
+|   |   |   |   |   |   flag = S2: normal (0.0)
+|   |   |   |   |   |   flag = S3: normal (0.0)
+|   |   |   |   |   |   flag = SF: normal (7.0)
+|   |   |   |   |   |   flag = SH: normal (0.0)
+|   |   |   |   |   service = ftp: anomaly (29.0)
+|   |   |   |   |   service = ftp_data: anomaly (2.0)
+|   |   |   |   |   service = gopher: anomaly (0.0)
+|   |   |   |   |   service = harvest: anomaly (0.0)
+|   |   |   |   |   service = hostnames: anomaly (0.0)
+|   |   |   |   |   service = http
+|   |   |   |   |   |   serror_rate <= 0.62
+|   |   |   |   |   |   |   dst_host_rerror_rate <= 0.7: normal (9.0)
+|   |   |   |   |   |   |   dst_host_rerror_rate > 0.7
+|   |   |   |   |   |   |   |   dst_host_srv_count <= 72: anomaly (5.0)
+|   |   |   |   |   |   |   |   dst_host_srv_count > 72: normal (2.0)
+|   |   |   |   |   |   serror_rate > 0.62: anomaly (3.0)
+|   |   |   |   |   service = http_2784: anomaly (0.0)
+|   |   |   |   |   service = http_443: anomaly (0.0)
+|   |   |   |   |   service = http_8001: anomaly (0.0)
+|   |   |   |   |   service = imap4: anomaly (116.0)
+|   |   |   |   |   service = IRC: anomaly (0.0)
+|   |   |   |   |   service = iso_tsap: anomaly (0.0)
+|   |   |   |   |   service = klogin: anomaly (0.0)
+|   |   |   |   |   service = kshell: anomaly (0.0)
+|   |   |   |   |   service = ldap: anomaly (0.0)
+|   |   |   |   |   service = link: anomaly (0.0)
+|   |   |   |   |   service = login: anomaly (0.0)
+|   |   |   |   |   service = mtp: anomaly (0.0)
+|   |   |   |   |   service = name: anomaly (0.0)
+|   |   |   |   |   service = netbios_dgm: anomaly (0.0)
+|   |   |   |   |   service = netbios_ns: anomaly (0.0)
+|   |   |   |   |   service = netbios_ssn: anomaly (0.0)
+|   |   |   |   |   service = netstat: anomaly (0.0)
+|   |   |   |   |   service = nnsp: anomaly (0.0)
+|   |   |   |   |   service = nntp: anomaly (1.0)
+|   |   |   |   |   service = ntp_u: anomaly (0.0)
+|   |   |   |   |   service = other: anomaly (83.0)
+|   |   |   |   |   service = pm_dump: anomaly (0.0)
+|   |   |   |   |   service = pop_2: anomaly (0.0)
+|   |   |   |   |   service = pop_3: anomaly (636.0)
+|   |   |   |   |   service = printer: anomaly (0.0)
+|   |   |   |   |   service = private: normal (2.0/1.0)
+|   |   |   |   |   service = red_i: anomaly (0.0)
+|   |   |   |   |   service = remote_job: anomaly (0.0)
+|   |   |   |   |   service = rje: anomaly (0.0)
+|   |   |   |   |   service = shell: anomaly (0.0)
+|   |   |   |   |   service = smtp: normal (27.0)
+|   |   |   |   |   service = sql_net: anomaly (0.0)
+|   |   |   |   |   service = ssh: anomaly (0.0)
+|   |   |   |   |   service = sunrpc: anomaly (47.0)
+|   |   |   |   |   service = supdup: anomaly (0.0)
+|   |   |   |   |   service = systat: anomaly (0.0)
+|   |   |   |   |   service = telnet: anomaly (797.0)
+|   |   |   |   |   service = tftp_u: anomaly (0.0)
+|   |   |   |   |   service = tim_i: anomaly (0.0)
+|   |   |   |   |   service = time: anomaly (0.0)
+|   |   |   |   |   service = urh_i: anomaly (0.0)
+|   |   |   |   |   service = urp_i: anomaly (0.0)
+|   |   |   |   |   service = uucp: anomaly (0.0)
+|   |   |   |   |   service = uucp_path: anomaly (0.0)
+|   |   |   |   |   service = vmnet: anomaly (0.0)
+|   |   |   |   |   service = whois: anomaly (0.0)
+|   |   |   |   |   service = X11: anomaly (0.0)
+|   |   |   |   |   service = Z39_50: anomaly (0.0)
+|   |   |   |   dst_host_diff_srv_rate > 0.83
+|   |   |   |   |   flag = OTH: normal (0.0)
+|   |   |   |   |   flag = REJ: normal (15.0/1.0)
+|   |   |   |   |   flag = RSTO: normal (0.0)
+|   |   |   |   |   flag = RSTOS0: normal (0.0)
+|   |   |   |   |   flag = RSTR: normal (0.0)
+|   |   |   |   |   flag = S0: normal (0.0)
+|   |   |   |   |   flag = S1: normal (0.0)
+|   |   |   |   |   flag = S2: normal (0.0)
+|   |   |   |   |   flag = S3: normal (0.0)
+|   |   |   |   |   flag = SF: anomaly (12.0)
+|   |   |   |   |   flag = SH: normal (0.0)
+|   |   |   count > 4: anomaly (5345.0)
+|   |   dst_host_same_src_port_rate > 0
+|   |   |   service = aol: anomaly (0.0)
+|   |   |   service = auth
+|   |   |   |   dst_bytes <= 35: anomaly (4.0/1.0)
+|   |   |   |   dst_bytes > 35: normal (14.0)
+|   |   |   service = bgp: anomaly (0.0)
+|   |   |   service = courier: anomaly (1.0)
+|   |   |   service = csnet_ns: anomaly (0.0)
+|   |   |   service = ctf: anomaly (0.0)
+|   |   |   service = daytime: anomaly (1.0)
+|   |   |   service = discard: anomaly (0.0)
+|   |   |   service = domain: anomaly (3.0)
+|   |   |   service = domain_u: anomaly (0.0)
+|   |   |   service = echo: anomaly (1.0)
+|   |   |   service = eco_i: anomaly (0.0)
+|   |   |   service = ecr_i: anomaly (0.0)
+|   |   |   service = efs: anomaly (0.0)
+|   |   |   service = exec: anomaly (0.0)
+|   |   |   service = finger
+|   |   |   |   dst_bytes <= 79: anomaly (38.0)
+|   |   |   |   dst_bytes > 79
+|   |   |   |   |   dst_host_rerror_rate <= 0.06: normal (39.0)
+|   |   |   |   |   dst_host_rerror_rate > 0.06: anomaly (3.0/1.0)
+|   |   |   service = ftp: anomaly (71.0/1.0)
+|   |   |   service = ftp_data
+|   |   |   |   dst_host_count <= 34: anomaly (201.0/2.0)
+|   |   |   |   dst_host_count > 34
+|   |   |   |   |   src_bytes <= 14
+|   |   |   |   |   |   dst_host_same_src_port_rate <= 0.45: anomaly (53.0/6.0)
+|   |   |   |   |   |   dst_host_same_src_port_rate > 0.45: normal (4.0)
+|   |   |   |   |   src_bytes > 14: normal (10.0)
+|   |   |   service = gopher: anomaly (1.0)
+|   |   |   service = harvest: anomaly (0.0)
+|   |   |   service = hostnames: anomaly (0.0)
+|   |   |   service = http
+|   |   |   |   dst_bytes <= 1165: anomaly (23.0/1.0)
+|   |   |   |   dst_bytes > 1165: normal (2.0)
+|   |   |   service = http_2784: anomaly (0.0)
+|   |   |   service = http_443: anomaly (1.0)
+|   |   |   service = http_8001: anomaly (0.0)
+|   |   |   service = imap4: anomaly (152.0)
+|   |   |   service = IRC: anomaly (0.0)
+|   |   |   service = iso_tsap: anomaly (1.0)
+|   |   |   service = klogin: anomaly (0.0)
+|   |   |   service = kshell: anomaly (0.0)
+|   |   |   service = ldap: anomaly (0.0)
+|   |   |   service = link: normal (2.0/1.0)
+|   |   |   service = login: anomaly (0.0)
+|   |   |   service = mtp: anomaly (0.0)
+|   |   |   service = name: anomaly (0.0)
+|   |   |   service = netbios_dgm: anomaly (1.0)
+|   |   |   service = netbios_ns: anomaly (0.0)
+|   |   |   service = netbios_ssn: anomaly (0.0)
+|   |   |   service = netstat: anomaly (1.0)
+|   |   |   service = nnsp: anomaly (2.0)
+|   |   |   service = nntp: anomaly (1.0)
+|   |   |   service = ntp_u: anomaly (0.0)
+|   |   |   service = other
+|   |   |   |   dst_host_same_src_port_rate <= 0.21: anomaly (41.0)
+|   |   |   |   dst_host_same_src_port_rate > 0.21: normal (28.0/2.0)
+|   |   |   service = pm_dump: anomaly (0.0)
+|   |   |   service = pop_2: anomaly (0.0)
+|   |   |   service = pop_3: anomaly (360.0)
+|   |   |   service = printer: anomaly (0.0)
+|   |   |   service = private
+|   |   |   |   srv_count <= 1: anomaly (218.0)
+|   |   |   |   srv_count > 1
+|   |   |   |   |   diff_srv_rate <= 0.31: anomaly (47.0)
+|   |   |   |   |   diff_srv_rate > 0.31: normal (10.0)
+|   |   |   service = red_i: anomaly (0.0)
+|   |   |   service = remote_job: normal (1.0)
+|   |   |   service = rje: anomaly (0.0)
+|   |   |   service = shell: anomaly (0.0)
+|   |   |   service = smtp
+|   |   |   |   rerror_rate <= 0.12: normal (61.0)
+|   |   |   |   rerror_rate > 0.12
+|   |   |   |   |   dst_host_srv_count <= 157: anomaly (2.0)
+|   |   |   |   |   dst_host_srv_count > 157: normal (2.0)
+|   |   |   service = sql_net: anomaly (0.0)
+|   |   |   service = ssh: anomaly (0.0)
+|   |   |   service = sunrpc: anomaly (72.0)
+|   |   |   service = supdup: anomaly (0.0)
+|   |   |   service = systat: anomaly (2.0)
+|   |   |   service = telnet: anomaly (253.0)
+|   |   |   service = tftp_u: anomaly (0.0)
+|   |   |   service = tim_i: anomaly (0.0)
+|   |   |   service = time: normal (6.0/1.0)
+|   |   |   service = urh_i: anomaly (0.0)
+|   |   |   service = urp_i: anomaly (0.0)
+|   |   |   service = uucp: anomaly (2.0)
+|   |   |   service = uucp_path: anomaly (0.0)
+|   |   |   service = vmnet: anomaly (0.0)
+|   |   |   service = whois: anomaly (0.0)
+|   |   |   service = X11: anomaly (1.0)
+|   |   |   service = Z39_50: anomaly (0.0)
+|   protocol_type = udp
+|   |   dst_host_srv_count <= 1
+|   |   |   same_srv_rate <= 0.1: anomaly (294.0/1.0)
+|   |   |   same_srv_rate > 0.1
+|   |   |   |   count <= 7: anomaly (13.0)
+|   |   |   |   count > 7: normal (5.0)
+|   |   dst_host_srv_count > 1
+|   |   |   service = aol: normal (0.0)
+|   |   |   service = auth: normal (0.0)
+|   |   |   service = bgp: normal (0.0)
+|   |   |   service = courier: normal (0.0)
+|   |   |   service = csnet_ns: normal (0.0)
+|   |   |   service = ctf: normal (0.0)
+|   |   |   service = daytime: normal (0.0)
+|   |   |   service = discard: normal (0.0)
+|   |   |   service = domain: normal (0.0)
+|   |   |   service = domain_u: normal (38.0)
+|   |   |   service = echo: normal (0.0)
+|   |   |   service = eco_i: normal (0.0)
+|   |   |   service = ecr_i: normal (0.0)
+|   |   |   service = efs: normal (0.0)
+|   |   |   service = exec: normal (0.0)
+|   |   |   service = finger: normal (0.0)
+|   |   |   service = ftp: normal (0.0)
+|   |   |   service = ftp_data: normal (0.0)
+|   |   |   service = gopher: normal (0.0)
+|   |   |   service = harvest: normal (0.0)
+|   |   |   service = hostnames: normal (0.0)
+|   |   |   service = http: normal (0.0)
+|   |   |   service = http_2784: normal (0.0)
+|   |   |   service = http_443: normal (0.0)
+|   |   |   service = http_8001: normal (0.0)
+|   |   |   service = imap4: normal (0.0)
+|   |   |   service = IRC: normal (0.0)
+|   |   |   service = iso_tsap: normal (0.0)
+|   |   |   service = klogin: normal (0.0)
+|   |   |   service = kshell: normal (0.0)
+|   |   |   service = ldap: normal (0.0)
+|   |   |   service = link: normal (0.0)
+|   |   |   service = login: normal (0.0)
+|   |   |   service = mtp: normal (0.0)
+|   |   |   service = name: normal (0.0)
+|   |   |   service = netbios_dgm: normal (0.0)
+|   |   |   service = netbios_ns: normal (0.0)
+|   |   |   service = netbios_ssn: normal (0.0)
+|   |   |   service = netstat: normal (0.0)
+|   |   |   service = nnsp: normal (0.0)
+|   |   |   service = nntp: normal (0.0)
+|   |   |   service = ntp_u: normal (0.0)
+|   |   |   service = other
+|   |   |   |   src_bytes <= 2: normal (17.0/1.0)
+|   |   |   |   src_bytes > 2: anomaly (6.0)
+|   |   |   service = pm_dump: normal (0.0)
+|   |   |   service = pop_2: normal (0.0)
+|   |   |   service = pop_3: normal (0.0)
+|   |   |   service = printer: normal (0.0)
+|   |   |   service = private: normal (173.0/20.0)
+|   |   |   service = red_i: normal (0.0)
+|   |   |   service = remote_job: normal (0.0)
+|   |   |   service = rje: normal (0.0)
+|   |   |   service = shell: normal (0.0)
+|   |   |   service = smtp: normal (0.0)
+|   |   |   service = sql_net: normal (0.0)
+|   |   |   service = ssh: normal (0.0)
+|   |   |   service = sunrpc: normal (0.0)
+|   |   |   service = supdup: normal (0.0)
+|   |   |   service = systat: normal (0.0)
+|   |   |   service = telnet: normal (0.0)
+|   |   |   service = tftp_u: normal (1.0)
+|   |   |   service = tim_i: normal (0.0)
+|   |   |   service = time: normal (0.0)
+|   |   |   service = urh_i: normal (0.0)
+|   |   |   service = urp_i: normal (0.0)
+|   |   |   service = uucp: normal (0.0)
+|   |   |   service = uucp_path: normal (0.0)
+|   |   |   service = vmnet: normal (0.0)
+|   |   |   service = whois: normal (0.0)
+|   |   |   service = X11: normal (0.0)
+|   |   |   service = Z39_50: normal (0.0)
+|   protocol_type = icmp
+|   |   src_bytes <= 25: anomaly (239.0)
+|   |   src_bytes > 25: normal (24.0)
+src_bytes > 32
+|   duration <= 239
+|   |   num_compromised <= 0
+|   |   |   src_bytes <= 492
+|   |   |   |   service = aol: normal (0.0)
+|   |   |   |   service = auth: normal (0.0)
+|   |   |   |   service = bgp: normal (0.0)
+|   |   |   |   service = courier: normal (0.0)
+|   |   |   |   service = csnet_ns: normal (0.0)
+|   |   |   |   service = ctf: normal (0.0)
+|   |   |   |   service = daytime: normal (0.0)
+|   |   |   |   service = discard: normal (0.0)
+|   |   |   |   service = domain: normal (0.0)
+|   |   |   |   service = domain_u: normal (853.0)
+|   |   |   |   service = echo: normal (0.0)
+|   |   |   |   service = eco_i: normal (3.0)
+|   |   |   |   service = ecr_i: normal (3.0)
+|   |   |   |   service = efs: normal (0.0)
+|   |   |   |   service = exec: normal (0.0)
+|   |   |   |   service = finger: normal (0.0)
+|   |   |   |   service = ftp
+|   |   |   |   |   is_guest_login = 0: anomaly (20.0/1.0)
+|   |   |   |   |   is_guest_login = 1
+|   |   |   |   |   |   flag = OTH: normal (0.0)
+|   |   |   |   |   |   flag = REJ: normal (0.0)
+|   |   |   |   |   |   flag = RSTO: normal (0.0)
+|   |   |   |   |   |   flag = RSTOS0: normal (0.0)
+|   |   |   |   |   |   flag = RSTR: normal (0.0)
+|   |   |   |   |   |   flag = S0: normal (0.0)
+|   |   |   |   |   |   flag = S1: anomaly (2.0)
+|   |   |   |   |   |   flag = S2: normal (0.0)
+|   |   |   |   |   |   flag = S3: normal (0.0)
+|   |   |   |   |   |   flag = SF
+|   |   |   |   |   |   |   num_file_creations <= 0: normal (36.0)
+|   |   |   |   |   |   |   num_file_creations > 0: anomaly (2.0)
+|   |   |   |   |   |   flag = SH: normal (0.0)
+|   |   |   |   service = ftp_data
+|   |   |   |   |   dst_host_serror_rate <= 0.11: normal (78.0/1.0)
+|   |   |   |   |   dst_host_serror_rate > 0.11
+|   |   |   |   |   |   count <= 1: anomaly (2.0)
+|   |   |   |   |   |   count > 1: normal (3.0)
+|   |   |   |   service = gopher: normal (0.0)
+|   |   |   |   service = harvest: normal (0.0)
+|   |   |   |   service = hostnames: normal (0.0)
+|   |   |   |   service = http
+|   |   |   |   |   src_bytes <= 145
+|   |   |   |   |   |   src_bytes <= 95: anomaly (4.0)
+|   |   |   |   |   |   src_bytes > 95: normal (25.0)
+|   |   |   |   |   src_bytes > 145: normal (6600.0)
+|   |   |   |   service = http_2784: normal (0.0)
+|   |   |   |   service = http_443: normal (0.0)
+|   |   |   |   service = http_8001: normal (0.0)
+|   |   |   |   service = imap4: normal (0.0)
+|   |   |   |   service = IRC: anomaly (1.0)
+|   |   |   |   service = iso_tsap: normal (0.0)
+|   |   |   |   service = klogin: normal (0.0)
+|   |   |   |   service = kshell: normal (0.0)
+|   |   |   |   service = ldap: normal (0.0)
+|   |   |   |   service = link: normal (0.0)
+|   |   |   |   service = login: anomaly (1.0)
+|   |   |   |   service = mtp: normal (0.0)
+|   |   |   |   service = name: normal (0.0)
+|   |   |   |   service = netbios_dgm: normal (0.0)
+|   |   |   |   service = netbios_ns: normal (0.0)
+|   |   |   |   service = netbios_ssn: normal (0.0)
+|   |   |   |   service = netstat: normal (0.0)
+|   |   |   |   service = nnsp: normal (0.0)
+|   |   |   |   service = nntp: normal (0.0)
+|   |   |   |   service = ntp_u: normal (10.0)
+|   |   |   |   service = other
+|   |   |   |   |   dst_host_same_src_port_rate <= 0.05: anomaly (17.0)
+|   |   |   |   |   dst_host_same_src_port_rate > 0.05
+|   |   |   |   |   |   dst_bytes <= 73: normal (9.0)
+|   |   |   |   |   |   dst_bytes > 73: anomaly (4.0/1.0)
+|   |   |   |   service = pm_dump: anomaly (16.0)
+|   |   |   |   service = pop_2: normal (0.0)
+|   |   |   |   service = pop_3
+|   |   |   |   |   dst_host_diff_srv_rate <= 0.02: anomaly (3.0)
+|   |   |   |   |   dst_host_diff_srv_rate > 0.02
+|   |   |   |   |   |   dst_host_same_srv_rate <= 0.06: normal (7.0)
+|   |   |   |   |   |   dst_host_same_srv_rate > 0.06: anomaly (3.0/1.0)
+|   |   |   |   service = printer: normal (0.0)
+|   |   |   |   service = private
+|   |   |   |   |   count <= 7
+|   |   |   |   |   |   src_bytes <= 72: anomaly (326.0/1.0)
+|   |   |   |   |   |   src_bytes > 72
+|   |   |   |   |   |   |   dst_bytes <= 52: normal (50.0/4.0)
+|   |   |   |   |   |   |   dst_bytes > 52
+|   |   |   |   |   |   |   |   dst_host_same_srv_rate <= 0.98: anomaly (24.0/2.0)
+|   |   |   |   |   |   |   |   dst_host_same_srv_rate > 0.98
+|   |   |   |   |   |   |   |   |   srv_count <= 1
+|   |   |   |   |   |   |   |   |   |   dst_bytes <= 146
+|   |   |   |   |   |   |   |   |   |   |   dst_host_same_srv_rate <= 0.99
+|   |   |   |   |   |   |   |   |   |   |   |   count <= 1
+|   |   |   |   |   |   |   |   |   |   |   |   |   dst_host_same_src_port_rate <= 0: normal (17.0/6.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   dst_host_same_src_port_rate > 0
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   dst_host_same_src_port_rate <= 0.01
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   dst_bytes <= 125: normal (2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   dst_bytes > 125
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   dst_host_diff_srv_rate <= 0.01: anomaly (19.0/7.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   dst_host_diff_srv_rate > 0.01: normal (9.0/3.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   dst_host_same_src_port_rate > 0.01: normal (2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   count > 1: anomaly (5.0/1.0)
+|   |   |   |   |   |   |   |   |   |   |   dst_host_same_srv_rate > 0.99
+|   |   |   |   |   |   |   |   |   |   |   |   dst_bytes <= 145: normal (12.0/4.0)
+|   |   |   |   |   |   |   |   |   |   |   |   dst_bytes > 145: anomaly (35.0/8.0)
+|   |   |   |   |   |   |   |   |   |   dst_bytes > 146: anomaly (48.0/9.0)
+|   |   |   |   |   |   |   |   |   srv_count > 1
+|   |   |   |   |   |   |   |   |   |   srv_count <= 2
+|   |   |   |   |   |   |   |   |   |   |   count <= 2
+|   |   |   |   |   |   |   |   |   |   |   |   dst_host_same_srv_rate <= 0.99
+|   |   |   |   |   |   |   |   |   |   |   |   |   dst_bytes <= 125: anomaly (3.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   dst_bytes > 125
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   dst_host_count <= 253: normal (8.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   dst_host_count > 253
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   dst_bytes <= 145: normal (2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   dst_bytes > 145: anomaly (15.0/6.0)
+|   |   |   |   |   |   |   |   |   |   |   |   dst_host_same_srv_rate > 0.99: normal (44.0/18.0)
+|   |   |   |   |   |   |   |   |   |   |   count > 2
+|   |   |   |   |   |   |   |   |   |   |   |   dst_host_same_src_port_rate <= 0: anomaly (9.0/2.0)
+|   |   |   |   |   |   |   |   |   |   |   |   dst_host_same_src_port_rate > 0: normal (4.0)
+|   |   |   |   |   |   |   |   |   |   srv_count > 2: normal (55.0/12.0)
+|   |   |   |   |   count > 7
+|   |   |   |   |   |   dst_host_same_src_port_rate <= 0.24
+|   |   |   |   |   |   |   dst_bytes <= 17: anomaly (3.0)
+|   |   |   |   |   |   |   dst_bytes > 17: normal (22.0)
+|   |   |   |   |   |   dst_host_same_src_port_rate > 0.24: normal (466.0)
+|   |   |   |   service = red_i: normal (0.0)
+|   |   |   |   service = remote_job: normal (0.0)
+|   |   |   |   service = rje: normal (0.0)
+|   |   |   |   service = shell: normal (0.0)
+|   |   |   |   service = smtp: normal (11.0)
+|   |   |   |   service = sql_net: normal (0.0)
+|   |   |   |   service = ssh: normal (0.0)
+|   |   |   |   service = sunrpc: normal (0.0)
+|   |   |   |   service = supdup: normal (0.0)
+|   |   |   |   service = systat: normal (0.0)
+|   |   |   |   service = telnet
+|   |   |   |   |   dst_bytes <= 5197: anomaly (404.0/5.0)
+|   |   |   |   |   dst_bytes > 5197
+|   |   |   |   |   |   num_root <= 1: normal (16.0)
+|   |   |   |   |   |   num_root > 1: anomaly (3.0)
+|   |   |   |   service = tftp_u: normal (0.0)
+|   |   |   |   service = tim_i: normal (0.0)
+|   |   |   |   service = time: normal (0.0)
+|   |   |   |   service = urh_i: normal (0.0)
+|   |   |   |   service = urp_i
+|   |   |   |   |   dst_host_count <= 19: anomaly (4.0)
+|   |   |   |   |   dst_host_count > 19: normal (18.0)
+|   |   |   |   service = uucp: normal (0.0)
+|   |   |   |   service = uucp_path: normal (0.0)
+|   |   |   |   service = vmnet: normal (0.0)
+|   |   |   |   service = whois: normal (0.0)
+|   |   |   |   service = X11: normal (0.0)
+|   |   |   |   service = Z39_50: normal (0.0)
+|   |   |   src_bytes > 492
+|   |   |   |   count <= 1
+|   |   |   |   |   protocol_type = tcp
+|   |   |   |   |   |   dst_host_srv_count <= 9
+|   |   |   |   |   |   |   num_root <= 0
+|   |   |   |   |   |   |   |   service = aol: normal (0.0)
+|   |   |   |   |   |   |   |   service = auth: normal (0.0)
+|   |   |   |   |   |   |   |   service = bgp: normal (0.0)
+|   |   |   |   |   |   |   |   service = courier: normal (0.0)
+|   |   |   |   |   |   |   |   service = csnet_ns: normal (0.0)
+|   |   |   |   |   |   |   |   service = ctf: normal (0.0)
+|   |   |   |   |   |   |   |   service = daytime: normal (0.0)
+|   |   |   |   |   |   |   |   service = discard: normal (0.0)
+|   |   |   |   |   |   |   |   service = domain: anomaly (1.0)
+|   |   |   |   |   |   |   |   service = domain_u: normal (0.0)
+|   |   |   |   |   |   |   |   service = echo: normal (0.0)
+|   |   |   |   |   |   |   |   service = eco_i: normal (0.0)
+|   |   |   |   |   |   |   |   service = ecr_i: normal (0.0)
+|   |   |   |   |   |   |   |   service = efs: normal (0.0)
+|   |   |   |   |   |   |   |   service = exec: normal (0.0)
+|   |   |   |   |   |   |   |   service = finger: normal (0.0)
+|   |   |   |   |   |   |   |   service = ftp: normal (4.0)
+|   |   |   |   |   |   |   |   service = ftp_data
+|   |   |   |   |   |   |   |   |   src_bytes <= 1952: normal (5.0)
+|   |   |   |   |   |   |   |   |   src_bytes > 1952: anomaly (7.0/1.0)
+|   |   |   |   |   |   |   |   service = gopher: normal (0.0)
+|   |   |   |   |   |   |   |   service = harvest: normal (0.0)
+|   |   |   |   |   |   |   |   service = hostnames: normal (0.0)
+|   |   |   |   |   |   |   |   service = http: normal (0.0)
+|   |   |   |   |   |   |   |   service = http_2784: normal (0.0)
+|   |   |   |   |   |   |   |   service = http_443: normal (0.0)
+|   |   |   |   |   |   |   |   service = http_8001: normal (0.0)
+|   |   |   |   |   |   |   |   service = imap4: anomaly (1.0)
+|   |   |   |   |   |   |   |   service = IRC: normal (0.0)
+|   |   |   |   |   |   |   |   service = iso_tsap: normal (0.0)
+|   |   |   |   |   |   |   |   service = klogin: normal (0.0)
+|   |   |   |   |   |   |   |   service = kshell: normal (0.0)
+|   |   |   |   |   |   |   |   service = ldap: normal (0.0)
+|   |   |   |   |   |   |   |   service = link: normal (0.0)
+|   |   |   |   |   |   |   |   service = login: normal (0.0)
+|   |   |   |   |   |   |   |   service = mtp: normal (0.0)
+|   |   |   |   |   |   |   |   service = name: normal (0.0)
+|   |   |   |   |   |   |   |   service = netbios_dgm: normal (0.0)
+|   |   |   |   |   |   |   |   service = netbios_ns: normal (0.0)
+|   |   |   |   |   |   |   |   service = netbios_ssn: normal (0.0)
+|   |   |   |   |   |   |   |   service = netstat: normal (0.0)
+|   |   |   |   |   |   |   |   service = nnsp: normal (0.0)
+|   |   |   |   |   |   |   |   service = nntp: normal (0.0)
+|   |   |   |   |   |   |   |   service = ntp_u: normal (0.0)
+|   |   |   |   |   |   |   |   service = other: normal (0.0)
+|   |   |   |   |   |   |   |   service = pm_dump: normal (0.0)
+|   |   |   |   |   |   |   |   service = pop_2: normal (0.0)
+|   |   |   |   |   |   |   |   service = pop_3: normal (0.0)
+|   |   |   |   |   |   |   |   service = printer: normal (0.0)
+|   |   |   |   |   |   |   |   service = private: normal (0.0)
+|   |   |   |   |   |   |   |   service = red_i: normal (0.0)
+|   |   |   |   |   |   |   |   service = remote_job: normal (0.0)
+|   |   |   |   |   |   |   |   service = rje: normal (0.0)
+|   |   |   |   |   |   |   |   service = shell: normal (0.0)
+|   |   |   |   |   |   |   |   service = smtp: normal (19.0/1.0)
+|   |   |   |   |   |   |   |   service = sql_net: normal (0.0)
+|   |   |   |   |   |   |   |   service = ssh: normal (0.0)
+|   |   |   |   |   |   |   |   service = sunrpc: normal (0.0)
+|   |   |   |   |   |   |   |   service = supdup: normal (0.0)
+|   |   |   |   |   |   |   |   service = systat: normal (0.0)
+|   |   |   |   |   |   |   |   service = telnet: anomaly (3.0)
+|   |   |   |   |   |   |   |   service = tftp_u: normal (0.0)
+|   |   |   |   |   |   |   |   service = tim_i: normal (0.0)
+|   |   |   |   |   |   |   |   service = time: normal (0.0)
+|   |   |   |   |   |   |   |   service = urh_i: normal (0.0)
+|   |   |   |   |   |   |   |   service = urp_i: normal (0.0)
+|   |   |   |   |   |   |   |   service = uucp: normal (0.0)
+|   |   |   |   |   |   |   |   service = uucp_path: normal (0.0)
+|   |   |   |   |   |   |   |   service = vmnet: normal (0.0)
+|   |   |   |   |   |   |   |   service = whois: normal (0.0)
+|   |   |   |   |   |   |   |   service = X11: anomaly (4.0/1.0)
+|   |   |   |   |   |   |   |   service = Z39_50: normal (0.0)
+|   |   |   |   |   |   |   num_root > 0: anomaly (5.0)
+|   |   |   |   |   |   dst_host_srv_count > 9
+|   |   |   |   |   |   |   dst_bytes <= 302
+|   |   |   |   |   |   |   |   dst_host_rerror_rate <= 0.01: normal (82.0/1.0)
+|   |   |   |   |   |   |   |   dst_host_rerror_rate > 0.01
+|   |   |   |   |   |   |   |   |   src_bytes <= 2056: normal (6.0)
+|   |   |   |   |   |   |   |   |   src_bytes > 2056: anomaly (13.0/1.0)
+|   |   |   |   |   |   |   dst_bytes > 302: normal (468.0/1.0)
+|   |   |   |   |   protocol_type = udp: anomaly (2.0)
+|   |   |   |   |   protocol_type = icmp: anomaly (42.0/2.0)
+|   |   |   |   count > 1
+|   |   |   |   |   dst_host_srv_diff_host_rate <= 0
+|   |   |   |   |   |   src_bytes <= 2686
+|   |   |   |   |   |   |   service = aol: anomaly (0.0)
+|   |   |   |   |   |   |   service = auth: anomaly (0.0)
+|   |   |   |   |   |   |   service = bgp: anomaly (0.0)
+|   |   |   |   |   |   |   service = courier: anomaly (0.0)
+|   |   |   |   |   |   |   service = csnet_ns: anomaly (0.0)
+|   |   |   |   |   |   |   service = ctf: anomaly (0.0)
+|   |   |   |   |   |   |   service = daytime: anomaly (0.0)
+|   |   |   |   |   |   |   service = discard: anomaly (0.0)
+|   |   |   |   |   |   |   service = domain: anomaly (0.0)
+|   |   |   |   |   |   |   service = domain_u: anomaly (0.0)
+|   |   |   |   |   |   |   service = echo: anomaly (0.0)
+|   |   |   |   |   |   |   service = eco_i: anomaly (0.0)
+|   |   |   |   |   |   |   service = ecr_i
+|   |   |   |   |   |   |   |   dst_host_same_src_port_rate <= 0.22
+|   |   |   |   |   |   |   |   |   wrong_fragment <= 0: anomaly (21.0)
+|   |   |   |   |   |   |   |   |   wrong_fragment > 0: normal (4.0)
+|   |   |   |   |   |   |   |   dst_host_same_src_port_rate > 0.22: anomaly (631.0)
+|   |   |   |   |   |   |   service = efs: anomaly (0.0)
+|   |   |   |   |   |   |   service = exec: anomaly (0.0)
+|   |   |   |   |   |   |   service = finger: anomaly (0.0)
+|   |   |   |   |   |   |   service = ftp: anomaly (0.0)
+|   |   |   |   |   |   |   service = ftp_data: normal (32.0/1.0)
+|   |   |   |   |   |   |   service = gopher: anomaly (0.0)
+|   |   |   |   |   |   |   service = harvest: anomaly (0.0)
+|   |   |   |   |   |   |   service = hostnames: anomaly (0.0)
+|   |   |   |   |   |   |   service = http: normal (3.0)
+|   |   |   |   |   |   |   service = http_2784: anomaly (0.0)
+|   |   |   |   |   |   |   service = http_443: anomaly (0.0)
+|   |   |   |   |   |   |   service = http_8001: anomaly (0.0)
+|   |   |   |   |   |   |   service = imap4: anomaly (0.0)
+|   |   |   |   |   |   |   service = IRC: anomaly (0.0)
+|   |   |   |   |   |   |   service = iso_tsap: anomaly (0.0)
+|   |   |   |   |   |   |   service = klogin: anomaly (0.0)
+|   |   |   |   |   |   |   service = kshell: anomaly (0.0)
+|   |   |   |   |   |   |   service = ldap: anomaly (0.0)
+|   |   |   |   |   |   |   service = link: anomaly (0.0)
+|   |   |   |   |   |   |   service = login: anomaly (0.0)
+|   |   |   |   |   |   |   service = mtp: anomaly (0.0)
+|   |   |   |   |   |   |   service = name: anomaly (0.0)
+|   |   |   |   |   |   |   service = netbios_dgm: anomaly (0.0)
+|   |   |   |   |   |   |   service = netbios_ns: anomaly (0.0)
+|   |   |   |   |   |   |   service = netbios_ssn: anomaly (0.0)
+|   |   |   |   |   |   |   service = netstat: anomaly (0.0)
+|   |   |   |   |   |   |   service = nnsp: anomaly (0.0)
+|   |   |   |   |   |   |   service = nntp: anomaly (0.0)
+|   |   |   |   |   |   |   service = ntp_u: anomaly (0.0)
+|   |   |   |   |   |   |   service = other: anomaly (3.0/1.0)
+|   |   |   |   |   |   |   service = pm_dump: anomaly (0.0)
+|   |   |   |   |   |   |   service = pop_2: anomaly (0.0)
+|   |   |   |   |   |   |   service = pop_3: anomaly (0.0)
+|   |   |   |   |   |   |   service = printer: anomaly (0.0)
+|   |   |   |   |   |   |   service = private: anomaly (0.0)
+|   |   |   |   |   |   |   service = red_i: anomaly (0.0)
+|   |   |   |   |   |   |   service = remote_job: anomaly (0.0)
+|   |   |   |   |   |   |   service = rje: anomaly (0.0)
+|   |   |   |   |   |   |   service = shell: anomaly (0.0)
+|   |   |   |   |   |   |   service = smtp
+|   |   |   |   |   |   |   |   dst_host_rerror_rate <= 0.03
+|   |   |   |   |   |   |   |   |   dst_host_rerror_rate <= 0.02: normal (13.0)
+|   |   |   |   |   |   |   |   |   dst_host_rerror_rate > 0.02: anomaly (29.0)
+|   |   |   |   |   |   |   |   dst_host_rerror_rate > 0.03: anomaly (258.0)
+|   |   |   |   |   |   |   service = sql_net: anomaly (0.0)
+|   |   |   |   |   |   |   service = ssh: anomaly (0.0)
+|   |   |   |   |   |   |   service = sunrpc: anomaly (0.0)
+|   |   |   |   |   |   |   service = supdup: anomaly (0.0)
+|   |   |   |   |   |   |   service = systat: anomaly (0.0)
+|   |   |   |   |   |   |   service = telnet: normal (1.0)
+|   |   |   |   |   |   |   service = tftp_u: anomaly (0.0)
+|   |   |   |   |   |   |   service = tim_i: anomaly (2.0)
+|   |   |   |   |   |   |   service = time: anomaly (0.0)
+|   |   |   |   |   |   |   service = urh_i: anomaly (0.0)
+|   |   |   |   |   |   |   service = urp_i: anomaly (0.0)
+|   |   |   |   |   |   |   service = uucp: anomaly (0.0)
+|   |   |   |   |   |   |   service = uucp_path: anomaly (0.0)
+|   |   |   |   |   |   |   service = vmnet: anomaly (0.0)
+|   |   |   |   |   |   |   service = whois: anomaly (0.0)
+|   |   |   |   |   |   |   service = X11: anomaly (0.0)
+|   |   |   |   |   |   |   service = Z39_50: anomaly (0.0)
+|   |   |   |   |   |   src_bytes > 2686
+|   |   |   |   |   |   |   dst_host_srv_rerror_rate <= 0.02
+|   |   |   |   |   |   |   |   flag = OTH: normal (0.0)
+|   |   |   |   |   |   |   |   flag = REJ: normal (0.0)
+|   |   |   |   |   |   |   |   flag = RSTO: normal (0.0)
+|   |   |   |   |   |   |   |   flag = RSTOS0: normal (0.0)
+|   |   |   |   |   |   |   |   flag = RSTR: anomaly (2.0)
+|   |   |   |   |   |   |   |   flag = S0: normal (0.0)
+|   |   |   |   |   |   |   |   flag = S1: normal (3.0/1.0)
+|   |   |   |   |   |   |   |   flag = S2: anomaly (1.0)
+|   |   |   |   |   |   |   |   flag = S3: normal (0.0)
+|   |   |   |   |   |   |   |   flag = SF: normal (74.0)
+|   |   |   |   |   |   |   |   flag = SH: normal (0.0)
+|   |   |   |   |   |   |   dst_host_srv_rerror_rate > 0.02: anomaly (41.0)
+|   |   |   |   |   dst_host_srv_diff_host_rate > 0
+|   |   |   |   |   |   count <= 292: normal (101.0/1.0)
+|   |   |   |   |   |   count > 292: anomaly (13.0)
+|   |   num_compromised > 0
+|   |   |   src_bytes <= 1455
+|   |   |   |   service = aol: anomaly (0.0)
+|   |   |   |   service = auth: anomaly (0.0)
+|   |   |   |   service = bgp: anomaly (0.0)
+|   |   |   |   service = courier: anomaly (0.0)
+|   |   |   |   service = csnet_ns: anomaly (0.0)
+|   |   |   |   service = ctf: anomaly (0.0)
+|   |   |   |   service = daytime: anomaly (0.0)
+|   |   |   |   service = discard: anomaly (0.0)
+|   |   |   |   service = domain: anomaly (0.0)
+|   |   |   |   service = domain_u: anomaly (0.0)
+|   |   |   |   service = echo: anomaly (0.0)
+|   |   |   |   service = eco_i: anomaly (0.0)
+|   |   |   |   service = ecr_i: anomaly (0.0)
+|   |   |   |   service = efs: anomaly (0.0)
+|   |   |   |   service = exec: anomaly (0.0)
+|   |   |   |   service = finger: anomaly (0.0)
+|   |   |   |   service = ftp: anomaly (0.0)
+|   |   |   |   service = ftp_data: anomaly (0.0)
+|   |   |   |   service = gopher: anomaly (0.0)
+|   |   |   |   service = harvest: anomaly (0.0)
+|   |   |   |   service = hostnames: anomaly (0.0)
+|   |   |   |   service = http: normal (3.0)
+|   |   |   |   service = http_2784: anomaly (0.0)
+|   |   |   |   service = http_443: anomaly (0.0)
+|   |   |   |   service = http_8001: anomaly (0.0)
+|   |   |   |   service = imap4: anomaly (0.0)
+|   |   |   |   service = IRC: anomaly (0.0)
+|   |   |   |   service = iso_tsap: anomaly (0.0)
+|   |   |   |   service = klogin: anomaly (0.0)
+|   |   |   |   service = kshell: anomaly (0.0)
+|   |   |   |   service = ldap: anomaly (0.0)
+|   |   |   |   service = link: anomaly (0.0)
+|   |   |   |   service = login: anomaly (0.0)
+|   |   |   |   service = mtp: anomaly (0.0)
+|   |   |   |   service = name: anomaly (0.0)
+|   |   |   |   service = netbios_dgm: anomaly (0.0)
+|   |   |   |   service = netbios_ns: anomaly (0.0)
+|   |   |   |   service = netbios_ssn: anomaly (0.0)
+|   |   |   |   service = netstat: anomaly (0.0)
+|   |   |   |   service = nnsp: anomaly (0.0)
+|   |   |   |   service = nntp: anomaly (0.0)
+|   |   |   |   service = ntp_u: anomaly (0.0)
+|   |   |   |   service = other: anomaly (0.0)
+|   |   |   |   service = pm_dump: anomaly (0.0)
+|   |   |   |   service = pop_2: anomaly (0.0)
+|   |   |   |   service = pop_3: anomaly (0.0)
+|   |   |   |   service = printer: anomaly (0.0)
+|   |   |   |   service = private: anomaly (0.0)
+|   |   |   |   service = red_i: anomaly (0.0)
+|   |   |   |   service = remote_job: anomaly (0.0)
+|   |   |   |   service = rje: anomaly (0.0)
+|   |   |   |   service = shell: anomaly (0.0)
+|   |   |   |   service = smtp: anomaly (0.0)
+|   |   |   |   service = sql_net: anomaly (0.0)
+|   |   |   |   service = ssh: anomaly (0.0)
+|   |   |   |   service = sunrpc: anomaly (0.0)
+|   |   |   |   service = supdup: anomaly (0.0)
+|   |   |   |   service = systat: anomaly (0.0)
+|   |   |   |   service = telnet
+|   |   |   |   |   dst_host_srv_diff_host_rate <= 0.01
+|   |   |   |   |   |   dst_host_same_src_port_rate <= 0.03: anomaly (11.0/1.0)
+|   |   |   |   |   |   dst_host_same_src_port_rate > 0.03: normal (2.0)
+|   |   |   |   |   dst_host_srv_diff_host_rate > 0.01: normal (2.0)
+|   |   |   |   service = tftp_u: anomaly (0.0)
+|   |   |   |   service = tim_i: anomaly (0.0)
+|   |   |   |   service = time: anomaly (0.0)
+|   |   |   |   service = urh_i: anomaly (0.0)
+|   |   |   |   service = urp_i: anomaly (0.0)
+|   |   |   |   service = uucp: anomaly (0.0)
+|   |   |   |   service = uucp_path: anomaly (0.0)
+|   |   |   |   service = vmnet: anomaly (0.0)
+|   |   |   |   service = whois: anomaly (0.0)
+|   |   |   |   service = X11: anomaly (0.0)
+|   |   |   |   service = Z39_50: anomaly (0.0)
+|   |   |   src_bytes > 1455: anomaly (329.0)
+|   duration > 239
+|   |   duration <= 2224
+|   |   |   protocol_type = tcp
+|   |   |   |   dst_bytes <= 610: anomaly (1209.0/3.0)
+|   |   |   |   dst_bytes > 610
+|   |   |   |   |   dst_host_serror_rate <= 0.68: anomaly (23.0/1.0)
+|   |   |   |   |   dst_host_serror_rate > 0.68: normal (3.0)
+|   |   |   protocol_type = udp
+|   |   |   |   dst_host_same_src_port_rate <= 0.97: normal (4.0)
+|   |   |   |   dst_host_same_src_port_rate > 0.97: anomaly (4.0)
+|   |   |   protocol_type = icmp: anomaly (0.0)
+|   |   duration > 2224
+|   |   |   dst_host_same_src_port_rate <= 0.61: normal (28.0)
+|   |   |   dst_host_same_src_port_rate > 0.61: anomaly (3.0)
+
+Number of Leaves  : 	615
+
+Size of the tree : 	714
+
+
+Time taken to build model: 1.03 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances       22228               98.5983 %
+Incorrectly Classified Instances       316                1.4017 %
+Kappa statistic                          0.9714
+Mean absolute error                      0.017 
+Root mean squared error                  0.1056
+Relative absolute error                  3.4631 %
+Root relative squared error             21.316  %
+Total Number of Instances            22544     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.986    0.014    0.982      0.986    0.984      0.971    0.996     0.994     normal
+                 0.986    0.014    0.989      0.986    0.988      0.971    0.996     0.995     anomaly
+Weighted Avg.    0.986    0.014    0.986      0.986    0.986      0.971    0.996     0.995     
+
+=== Confusion Matrix ===
+
+     a     b   <-- classified as
+  9574   137 |     a = normal
+   179 12654 |     b = anomaly
+

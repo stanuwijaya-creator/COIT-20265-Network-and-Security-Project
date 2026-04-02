@@ -1,0 +1,86 @@
+=== Run information ===
+
+Evaluator:    weka.attributeSelection.WrapperSubsetEval -B weka.classifiers.trees.J48 -F 5 -T 0.01 -R 1 -E DEFAULT -- -C 0.25 -M 2
+Search:       weka.attributeSelection.BestFirst -D 1 -N 5
+Relation:     DF_unsw_test_p_weka
+Instances:    41089
+Attributes:   43
+              dur
+              proto
+              service
+              state
+              spkts
+              dpkts
+              sbytes
+              dbytes
+              rate
+              sttl
+              dttl
+              sload
+              dload
+              sloss
+              dloss
+              sinpkt
+              dinpkt
+              sjit
+              djit
+              swin
+              stcpb
+              dtcpb
+              dwin
+              tcprtt
+              synack
+              ackdat
+              smean
+              dmean
+              trans_depth
+              response_body_len
+              ct_srv_src
+              ct_state_ttl
+              ct_dst_ltm
+              ct_src_dport_ltm
+              ct_dst_sport_ltm
+              ct_dst_src_ltm
+              is_ftp_login
+              ct_ftp_cmd
+              ct_flw_http_mthd
+              ct_src_ltm
+              ct_srv_dst
+              is_sm_ips_ports
+              attack_cat
+Evaluation mode:    evaluate on all training data
+
+
+
+=== Attribute Selection on all input data ===
+
+Search Method:
+	Best first.
+	Start set: no attributes
+	Search direction: forward
+	Stale search after 5 node expansions
+	Total number of subsets evaluated: 609
+	Merit of best subset found:    0.993
+
+Attribute Subset Evaluator (supervised, Class (nominal): 43 attack_cat):
+	Wrapper Subset Evaluator
+	Learning scheme: weka.classifiers.trees.J48
+	Scheme options: -C 0.25 -M 2 
+	Subset evaluation: classification accuracy
+	Number of folds for accuracy estimation: 5
+
+Selected attributes: 1,2,3,4,7,8,10,13,18,30,36,37,38 : 13
+                     dur
+                     proto
+                     service
+                     state
+                     sbytes
+                     dbytes
+                     sttl
+                     dload
+                     sjit
+                     response_body_len
+                     ct_dst_src_ltm
+                     is_ftp_login
+                     ct_ftp_cmd
+

@@ -1,0 +1,141 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.trees.J48 -C 0.25 -M 2
+Relation:     DF_unsw_test_p_weka
+Instances:    37583
+Attributes:   43
+              dur
+              proto
+              service
+              state
+              spkts
+              dpkts
+              sbytes
+              dbytes
+              rate
+              sttl
+              dttl
+              sload
+              dload
+              sloss
+              dloss
+              sinpkt
+              dinpkt
+              sjit
+              djit
+              swin
+              stcpb
+              dtcpb
+              dwin
+              tcprtt
+              synack
+              ackdat
+              smean
+              dmean
+              trans_depth
+              response_body_len
+              ct_srv_src
+              ct_state_ttl
+              ct_dst_ltm
+              ct_src_dport_ltm
+              ct_dst_sport_ltm
+              ct_dst_src_ltm
+              is_ftp_login
+              ct_ftp_cmd
+              ct_flw_http_mthd
+              ct_src_ltm
+              ct_srv_dst
+              is_sm_ips_ports
+              attack_cat
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+J48 pruned tree
+------------------
+
+proto <= 117
+|   ct_dst_sport_ltm <= 3
+|   |   proto <= 109
+|   |   |   smean <= 49: Normal (1009.0/2.0)
+|   |   |   smean > 49
+|   |   |   |   smean <= 750
+|   |   |   |   |   ct_src_dport_ltm <= 2: Backdoor (81.0)
+|   |   |   |   |   ct_src_dport_ltm > 2
+|   |   |   |   |   |   ct_dst_ltm <= 2: Normal (3.0)
+|   |   |   |   |   |   ct_dst_ltm > 2: Backdoor (5.0)
+|   |   |   |   smean > 750: Normal (3.0)
+|   |   proto > 109
+|   |   |   ct_srv_dst <= 1
+|   |   |   |   smean <= 47
+|   |   |   |   |   state <= 10963
+|   |   |   |   |   |   dmean <= 59: Normal (42.0)
+|   |   |   |   |   |   dmean > 59: Backdoor (2.0)
+|   |   |   |   |   state > 10963: Backdoor (20.0)
+|   |   |   |   smean > 47
+|   |   |   |   |   dttl <= 32: Normal (2247.0)
+|   |   |   |   |   dttl > 32
+|   |   |   |   |   |   dur <= 0.351177
+|   |   |   |   |   |   |   synack <= 0.010186: Backdoor (7.0)
+|   |   |   |   |   |   |   synack > 0.010186
+|   |   |   |   |   |   |   |   sttl <= 62
+|   |   |   |   |   |   |   |   |   sbytes <= 870: Backdoor (5.0/1.0)
+|   |   |   |   |   |   |   |   |   sbytes > 870: Normal (3.0)
+|   |   |   |   |   |   |   |   sttl > 62: Normal (14.0/1.0)
+|   |   |   |   |   |   dur > 0.351177: Normal (1892.0/10.0)
+|   |   |   ct_srv_dst > 1: Normal (31725.0/17.0)
+|   ct_dst_sport_ltm > 3
+|   |   ct_state_ttl <= 1: Normal (85.0)
+|   |   ct_state_ttl > 1
+|   |   |   ct_srv_src <= 4: Normal (6.0)
+|   |   |   ct_srv_src > 4: Backdoor (202.0)
+proto > 117: Backdoor (232.0)
+
+Number of Leaves  : 	19
+
+Size of the tree : 	37
+
+
+Time taken to build model: 5.08 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances       37533               99.867  %
+Incorrectly Classified Instances        50                0.133  %
+Kappa statistic                          0.9555
+Mean absolute error                      0.0004
+Root mean squared error                  0.0162
+Relative absolute error                  6.9362 %
+Root relative squared error             29.2521 %
+Total Number of Instances            37583     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 1.000    0.063    0.999      1.000    0.999      0.956    0.975     0.999     Normal
+                 0.937    0.000    0.977      0.937    0.956      0.956    0.975     0.935     Backdoor
+                 ?        0.000    ?          ?        ?          ?        ?         ?         Analysis
+                 ?        0.000    ?          ?        ?          ?        ?         ?         Fuzzers
+                 ?        0.000    ?          ?        ?          ?        ?         ?         Shellcode
+                 ?        0.000    ?          ?        ?          ?        ?         ?         Reconnaissance
+                 ?        0.000    ?          ?        ?          ?        ?         ?         Exploits
+                 ?        0.000    ?          ?        ?          ?        ?         ?         DoS
+                 ?        0.000    ?          ?        ?          ?        ?         ?         Worms
+                 ?        0.000    ?          ?        ?          ?        ?         ?         Generic
+Weighted Avg.    0.999    0.062    0.999      0.999    0.999      0.956    0.975     0.998     
+
+=== Confusion Matrix ===
+
+     a     b     c     d     e     f     g     h     i     j   <-- classified as
+ 36987    13     0     0     0     0     0     0     0     0 |     a = Normal
+    37   546     0     0     0     0     0     0     0     0 |     b = Backdoor
+     0     0     0     0     0     0     0     0     0     0 |     c = Analysis
+     0     0     0     0     0     0     0     0     0     0 |     d = Fuzzers
+     0     0     0     0     0     0     0     0     0     0 |     e = Shellcode
+     0     0     0     0     0     0     0     0     0     0 |     f = Reconnaissance
+     0     0     0     0     0     0     0     0     0     0 |     g = Exploits
+     0     0     0     0     0     0     0     0     0     0 |     h = DoS
+     0     0     0     0     0     0     0     0     0     0 |     i = Worms
+     0     0     0     0     0     0     0     0     0     0 |     j = Generic
+
