@@ -1,0 +1,335 @@
+[
+    {
+        "id": "c63eb29d63c1f82c",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "ad67d0ee70ea12ee",
+        "type": "mqtt in",
+        "z": "c63eb29d63c1f82c",
+        "name": "",
+        "topic": "testtopic/network1",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "6a21bcf2544d8998",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 230,
+        "y": 740,
+        "wires": [
+            [
+                "5ad055497555f8d2",
+                "5829e6d6f6b4da38"
+            ]
+        ]
+    },
+    {
+        "id": "5829e6d6f6b4da38",
+        "type": "debug",
+        "z": "c63eb29d63c1f82c",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 790,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "5ad055497555f8d2",
+        "type": "function",
+        "z": "c63eb29d63c1f82c",
+        "name": "function 1",
+        "func": "var sensorData = msg.payload;\nmsg.payload = //sensorData.payloadT.temperature; \n{ \n    Is_ftp_login:sensorData.is_ftp_login,\n    Ct_dst_ltm:sensorData.ct_dst_ltm,\n    Ct_dst_src_ltm:sensorData.ct_dst_src_ltm,\n    Ct_ftp_cmd:sensorData.ct_ftp_cmd,\n    Ct_flw_http_mthd:sensorData.ct_flw_http_mthd,\n    Ct_srv_dst:sensorData.ct_srv_dst,\n    Attack_cat:sensorData.attack_cat,\n    DeviceName:sensorData.device_name\n} \nreturn msg; \n\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 860,
+        "y": 740,
+        "wires": [
+            [
+                "a682803d26e2399d",
+                "506845e4eef18555"
+            ]
+        ]
+    },
+    {
+        "id": "a682803d26e2399d",
+        "type": "debug",
+        "z": "c63eb29d63c1f82c",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1040,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "506845e4eef18555",
+        "type": "influxdb3-write",
+        "z": "c63eb29d63c1f82c",
+        "influxdb": "75a26449e8f9bffe",
+        "name": "Test",
+        "measurement": "Network2",
+        "database": "Test",
+        "x": 1150,
+        "y": 720,
+        "wires": [
+            [
+                "0d7d078ae41d9572"
+            ]
+        ]
+    },
+    {
+        "id": "0d7d078ae41d9572",
+        "type": "debug",
+        "z": "c63eb29d63c1f82c",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1380,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "0f54d32a0c1008eb",
+        "type": "mqtt in",
+        "z": "c63eb29d63c1f82c",
+        "name": "",
+        "topic": "testtopic/network2",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "6a21bcf2544d8998",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 270,
+        "y": 860,
+        "wires": [
+            [
+                "4e1873726cd5e264",
+                "e14babefa75a1041"
+            ]
+        ]
+    },
+    {
+        "id": "e14babefa75a1041",
+        "type": "function",
+        "z": "c63eb29d63c1f82c",
+        "name": "function 2",
+        "func": "var sensorData = msg.payload;\nmsg.payload = //sensorData.payloadT.temperature; \n{ \n    Is_ftp_login:sensorData.is_ftp_login,\n    Ct_dst_ltm:sensorData.ct_dst_ltm,\n    Ct_dst_src_ltm:sensorData.ct_dst_src_ltm,\n    Ct_ftp_cmd:sensorData.ct_ftp_cmd,\n    Ct_flw_http_mthd:sensorData.ct_flw_http_mthd,\n    Ct_srv_dst:sensorData.ct_srv_dst,\n    Attack_cat:sensorData.attack_cat,\n    DeviceName:sensorData.device_name\n} \nreturn msg; \n\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 840,
+        "y": 860,
+        "wires": [
+            [
+                "506845e4eef18555",
+                "2398a81c701cbefb"
+            ]
+        ]
+    },
+    {
+        "id": "65504936685b7561",
+        "type": "mqtt in",
+        "z": "c63eb29d63c1f82c",
+        "name": "",
+        "topic": "testtopic/network3",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "6a21bcf2544d8998",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 270,
+        "y": 960,
+        "wires": [
+            [
+                "dbda9b38b69aeacc",
+                "344a34146a706f76"
+            ]
+        ]
+    },
+    {
+        "id": "344a34146a706f76",
+        "type": "function",
+        "z": "c63eb29d63c1f82c",
+        "name": "function 3",
+        "func": "var sensorData = msg.payload;\nmsg.payload = //sensorData.payloadT.temperature; \n{ \n    Is_ftp_login:sensorData.is_ftp_login,\n    Ct_dst_ltm:sensorData.ct_dst_ltm,\n    Ct_dst_src_ltm:sensorData.ct_dst_src_ltm,\n    Ct_ftp_cmd:sensorData.ct_ftp_cmd,\n    Ct_flw_http_mthd:sensorData.ct_flw_http_mthd,\n    Ct_srv_dst:sensorData.ct_srv_dst,\n    Attack_cat:sensorData.attack_cat,\n    DeviceName:sensorData.device_name\n} \nreturn msg; \n\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 820,
+        "y": 960,
+        "wires": [
+            [
+                "506845e4eef18555",
+                "21bfdcda8fec9ca8"
+            ]
+        ]
+    },
+    {
+        "id": "4e1873726cd5e264",
+        "type": "debug",
+        "z": "c63eb29d63c1f82c",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 470,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "dbda9b38b69aeacc",
+        "type": "debug",
+        "z": "c63eb29d63c1f82c",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 490,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "2398a81c701cbefb",
+        "type": "debug",
+        "z": "c63eb29d63c1f82c",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 1090,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "21bfdcda8fec9ca8",
+        "type": "debug",
+        "z": "c63eb29d63c1f82c",
+        "name": "debug 7",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 1070,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "6a21bcf2544d8998",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "s72d970b.ala.asia-southeast1.emqxsl.com",
+        "port": "8883",
+        "tls": "d26e542939f46452",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": true,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "75a26449e8f9bffe",
+        "type": "influxdb3-config",
+        "name": "",
+        "host": "https://us-east-1-1.aws.cloud2.influxdata.com",
+        "database": "Test",
+        "tlsRejectUnauthorized": true,
+        "caCertPath": ""
+    },
+    {
+        "id": "d26e542939f46452",
+        "type": "tls-config",
+        "name": "",
+        "cert": "",
+        "key": "",
+        "ca": "",
+        "certname": "",
+        "keyname": "",
+        "caname": "emqxsl-ca.crt",
+        "servername": "",
+        "verifyservercert": true,
+        "alpnprotocol": ""
+    },
+    {
+        "id": "062dee1ece4eeaa9",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-contrib-influxdb3": "1.0.6"
+        }
+    }
+]
