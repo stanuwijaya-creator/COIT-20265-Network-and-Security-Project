@@ -154,7 +154,6 @@ def Machine_Learning():
 
 def main():
     setup_basic()
-    Publish2()
     Machine_Learning()
    
     
