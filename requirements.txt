@@ -1,12 +1,5 @@
 numpy
 seaborn
 pandas
-sqlalchemy
-io
-influxdb_client_3
-sklearn.model_selection
-sklearn.ensemble
-sklearn.metrics
-sklearn.preprocessing
-matplotlib.pyplot
-streamlit_gsheets
+scikit-learn
+influxdb3-python
