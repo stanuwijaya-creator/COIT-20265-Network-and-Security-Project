@@ -3,7 +3,6 @@ import warnings
 import numpy as np
 import seaborn as sns
 import streamlit as st
-from sqlalchemy import create_engine,text
 import random
 import time
 import json
@@ -18,8 +17,7 @@ import matplotlib.pyplot as plt
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.tree import export_text
 from pathlib import Path
-from st_files_connection import FilesConnection
-
+from streamlit_gsheets import GSheetsConnection
 
 def setup_basic():
     title = "Intrusion Detection System Sensor"
@@ -115,11 +113,9 @@ def Machine_Learning():
 
     x_test=df[['ct_dst_ltm','ct_flw_http_mthd','ct_ftp_cmd','ct_srv_dst','is_ftp_login' ]]
 
-    conn = st.connection('s3', type=FilesConnection)
-    UNSW_dataset = conn.read("unswdataset/Combine_UNSW_Dataset.csv", input_format="csv", ttl=600)
+    conn = st.connection("gsheets", type=GSheetsConnection)
+    UNSW_dataset =  conn.read(spreadsheet="https://docs.google.com/spreadsheets/d/1I_h0N9DzfZDT0b8hE4HXz2TECR71WvV7/edit?usp=sharing&ouid=105360195309905201300&rtpof=true&sd=true",worksheet="Combine_UNSW_Dataset",ttl="10m")
 
-
-    
     X = UNSW_dataset[['ct_dst_ltm','ct_flw_http_mthd','ct_ftp_cmd','ct_srv_dst','is_ftp_login'  ]]
     y = UNSW_dataset['attack_cat']
 
