@@ -3,3 +3,4 @@ seaborn
 pandas
 scikit-learn
 influxdb3-python
+st-gsheets-connection
