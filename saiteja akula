@@ -1,1 +1,6 @@
-
+nzip iot-nids-xgboost.zip
+cd iot-nids-xgboost
+git init
+git add .
+git commit -m "Initial commit: XGBoost IoT NIDS pipeline"
+gh repo create iot-nids-xgboost --public --source=. --push
