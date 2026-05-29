@@ -1,6 +1,52 @@
-nzip iot-nids-xgboost.zip
-cd iot-nids-xgboost
-git init
-git add .
-git commit -m "Initial commit: XGBoost IoT NIDS pipeline"
-gh repo create iot-nids-xgboost --public --source=. --push
+import xgboost as xgb
+from sklearn.model_selection import train_test_split, StratifiedKFold
+from sklearn.metrics import classification_report, confusion_matrix
+from sklearn.preprocessing import LabelEncoder
+import pandas as pd
+import numpy as np
+i
+# 1. Load and encode
+df = pd.read_csv('UNSW_NB15_training-set.csv')
+le = LabelEncoder()
+df['label'] = le.fit_transform(df['label'])   # benign=0, attack=1
+
+X = df.drop(columns=['label', 'attack_cat'])
+y = df['label']
+
+# 2. Handle class imbalance
+neg, pos = (y == 0).sum(), (y == 1).sum()
+scale_pos = neg / pos                        # e.g. ~9 for UNSW-NB15
+
+# 3. Train / test split (stratified)
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42, stratify=y
+)
+
+# 4. Define model
+model = xgb.XGBClassifier(
+    n_estimators=300,
+    learning_rate=0.1,
+    max_depth=6,
+    subsample=0.8,
+    colsample_bytree=0.8,
+    scale_pos_weight=scale_pos,
+    use_label_encoder=False,
+    eval_metric='logloss',
+    tree_method='hist',          # fast for large datasets
+    random_state=42
+)
+
+# 5. Train with early stopping
+model.fit(
+    X_train, y_train,
+    eval_set=[(X_test, y_test)],
+    verbose=50
+)
+
+# 6. Evaluate
+y_pred = model.predict(X_test)
+print(classification_report(y_test, y_pred,
+      target_names=['Benign', 'Attack']))
+
+# 7. Feature importance
+xgb.plot_importance(model, max_num_features=15)
