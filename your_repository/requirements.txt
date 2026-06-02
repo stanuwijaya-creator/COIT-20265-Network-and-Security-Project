@@ -4,4 +4,4 @@ pandas
 dash_ag_grid
 scikit-learn
 xgboost
-influxdb_client_3
+influxdb3-python
