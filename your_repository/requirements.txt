@@ -1,0 +1,7 @@
+gunicorn==22.0.0
+numpy==2.3.3
+pandas
+dash_ag_grid
+scikit-learn
+xgboost
+influxdb_client_3
