@@ -1,5 +1,4 @@
-from dash import Dash, dash_table
-from databricks import sql
+
 import os
 import random
 import time
