@@ -95,10 +95,29 @@ def subscribe(client: mqtt_client):
     client.subscribe(topic)
     client.on_message = on_message
     
-        
-client = connect_mqtt()
-subscribe(client)
-client.loop_forever()
+
+
+app = Dash()
+
+
+app.layout = [
+    html.Div(children='MQTT Broker Messages recording '),
+    dcc.Markdown('''  Made by :
+                 - Dev Anand Suresh (12272597)
+                 - Sai Teja Akula (12228905)
+                 - Suhartanto Tanuwijaya (12290667)
+                 '''),
+ 
+    ]
+
+
+if __name__ == '__main__':
+    client = connect_mqtt()
+    subscribe(client)
+    client.loop_forever()
+    app.run(debug=True)
+ 
+
 
 
 
